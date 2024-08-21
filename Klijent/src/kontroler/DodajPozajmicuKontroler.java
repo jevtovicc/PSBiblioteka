@@ -4,11 +4,9 @@
  */
 package kontroler;
 
-import domen.Autor;
 import domen.Clan;
 import domen.Knjiga;
 import domen.Pozajmica;
-import forme.model.ModelTabeleAutor;
 import forme.model.ModelTabeleClan;
 import forme.model.ModelTabeleKnjiga;
 import forme.pozajmica.DodajPozajmicuForma;
@@ -45,6 +43,12 @@ public class DodajPozajmicuKontroler {
                
                String datumIznajmljivanjaString = dpf.getjTextFieldDatumPozajmice().getText().trim();
                String datumVracanjaString = dpf.getjTextFieldDatumVracanja().getText().trim();
+               
+               if (datumIznajmljivanjaString.isEmpty()) {
+                   JOptionPane.showMessageDialog(dpf, "Polje za datum pozajmice ne sme biti prazno", "Greska", JOptionPane.ERROR_MESSAGE);
+                   return;
+               } 
+               
                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
                try {                   
                    Date datumIznajmljivanja = formatter.parse(datumIznajmljivanjaString);
@@ -54,14 +58,18 @@ public class DodajPozajmicuKontroler {
                    return;
                }
                
-               try {                   
-                   Date datumVracanja = formatter.parse(datumVracanjaString);
-                   p.setDatumVracanja(datumVracanja);
-               } catch (ParseException pex) {
-                   JOptionPane.showMessageDialog(dpf, "Datum vracanja mora biti u odgovarajucem formatu", "Greska", JOptionPane.ERROR_MESSAGE);
-                   return;
+               if (datumVracanjaString == null || datumVracanjaString.isEmpty()) {
+                   p.setDatumVracanja(null);
+               } else {
+                   try {                   
+                       Date datumVracanja = formatter.parse(datumVracanjaString);
+                       p.setDatumVracanja(datumVracanja);
+                   } catch (ParseException pex) {
+                       JOptionPane.showMessageDialog(dpf, "Datum vracanja mora biti u odgovarajucem formatu", "Greska", JOptionPane.ERROR_MESSAGE);
+                       return;
+                   }
                }
-               
+
                int redClana = dpf.getjTableClanovi().getSelectedRow();
                if(redClana == -1) {
                     JOptionPane.showMessageDialog(dpf, "Morate izabrati clana", "Greska", JOptionPane.ERROR_MESSAGE);

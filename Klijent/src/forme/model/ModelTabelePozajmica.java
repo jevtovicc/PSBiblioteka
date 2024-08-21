@@ -43,7 +43,7 @@ public class ModelTabelePozajmica extends AbstractTableModel {
         String outputPattern = "dd/MM/yyyy";
         SimpleDateFormat sdf = new SimpleDateFormat(outputPattern);
         String datumPozajmiceString = sdf.format(p.getDatumPozajmice());
-        String datumVracanjaString = sdf.format(p.getDatumVracanja());
+        String datumVracanjaString = p.getDatumVracanja() == null ? null : sdf.format(p.getDatumVracanja());
         
         switch (columnIndex) {
             case 0: return p.getPozajmicaID();

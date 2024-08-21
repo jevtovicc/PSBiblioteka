@@ -164,8 +164,13 @@ public class Pozajmica implements ApstraktniDomenskiObjekat {
         String outputPattern = "yyyy-MM-dd";
         SimpleDateFormat sdf = new SimpleDateFormat(outputPattern);
         String datumPozajmiceString = sdf.format(datumPozajmice);
-        String datumVracanjaString = sdf.format(datumVracanja);
-        return clan.getClanID() + "," + knjiga.getKnjigaID() + ",'" + datumPozajmiceString + "','" + datumVracanjaString + "'";
+        String datumVracanjaString = datumVracanja == null ? null : sdf.format(datumVracanja);        
+        
+        if(datumVracanjaString != null) {
+            return clan.getClanID() + "," + knjiga.getKnjigaID() + ",'" + datumPozajmiceString + "','" + datumVracanjaString + "'";
+        } else {
+            return clan.getClanID() + "," + knjiga.getKnjigaID() + ",'" + datumPozajmiceString + "', NULL";
+        }
     }
 
     @Override
@@ -183,8 +188,8 @@ public class Pozajmica implements ApstraktniDomenskiObjekat {
         String outputPattern = "yyyy-MM-dd";
         SimpleDateFormat sdf = new SimpleDateFormat(outputPattern);
         String datumPozajmiceString = sdf.format(datumPozajmice);
-        String datumVracanjaString = sdf.format(datumVracanja);
-        return "clanID=" + clan.getClanID() + ", knjigaID=" + knjiga.getKnjigaID() + ", datumPozajmice='" + datumPozajmiceString + "', datumVracanja=" + datumVracanjaString;
+        String datumVracanjaString = datumVracanja == null ? null : sdf.format(datumVracanja);  
+        return "clanID=" + clan.getClanID() + ", knjigaID=" + knjiga.getKnjigaID() + ", datumPozajmice='" + datumPozajmiceString + "', datumVracanja=" + datumVracanjaString == null ? "NULL" : datumVracanjaString;
     }
 
     @Override
