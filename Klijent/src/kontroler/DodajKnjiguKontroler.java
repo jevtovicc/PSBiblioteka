@@ -38,6 +38,16 @@ public class DodajKnjiguKontroler {
                String nazivKnjige = dkforma.getjTextFieldNazivKnjige().getText().trim();
                String ISBN = dkforma.getjTextFieldISBN().getText().trim();
                
+               if (nazivKnjige.isEmpty()) {
+                   JOptionPane.showMessageDialog(dkforma, "Polje za naziv knjige ne sme biti prazno", "Greska", JOptionPane.ERROR_MESSAGE);
+                   return;
+               }
+               
+               if (ISBN.isEmpty()) {
+                   JOptionPane.showMessageDialog(dkforma, "Polje za ISBN knjige ne sme biti prazno", "Greska", JOptionPane.ERROR_MESSAGE);
+                   return;
+               }
+               
                int kolicina = (Integer) dkforma.getjSpinnerKolicina().getValue();
                
                int red = dkforma.getjTableAutori().getSelectedRow();

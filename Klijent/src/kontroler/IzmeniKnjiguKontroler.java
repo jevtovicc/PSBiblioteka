@@ -35,6 +35,17 @@ public class IzmeniKnjiguKontroler {
            private void izmeni(ActionEvent e) {
                String nazivKnjige = ikforma.getjTextFieldNazivKnjige().getText().trim();
                String ISBN = ikforma.getjTextFieldISBN().getText().trim();
+               
+               if (nazivKnjige.isEmpty()) {
+                   JOptionPane.showMessageDialog(ikforma, "Polje za naziv knjige ne sme biti prazno", "Greska", JOptionPane.ERROR_MESSAGE);
+                   return;
+               }
+               
+               if (ISBN.isEmpty()) {
+                   JOptionPane.showMessageDialog(ikforma, "Polje za ISBN knjige ne sme biti prazno", "Greska", JOptionPane.ERROR_MESSAGE);
+                   return;
+               }
+               
                int kolicina = (Integer) ikforma.getjSpinnerKolicina().getValue();
                
                knjigaZaIzmenu.setNazivKnjige(nazivKnjige);

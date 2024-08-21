@@ -38,9 +38,30 @@ public class IzmeniClanaKontroler {
            private void izmeni(ActionEvent e) {
                String imePrezime = icforma.getjTextFieldImePrezime().getText().trim();
                String adresaStanovanja = icforma.getjTextFieldAdresa().getText().trim();
+               
+               if (imePrezime.isEmpty()) {
+                   JOptionPane.showMessageDialog(icforma, "Polje za ime i prezime ne sme biti prazno", "Greska", JOptionPane.ERROR_MESSAGE);
+                   return;
+               } 
+               
+               if (adresaStanovanja.isEmpty()) {
+                   JOptionPane.showMessageDialog(icforma, "Polje za adresu ne sme biti prazno", "Greska", JOptionPane.ERROR_MESSAGE);
+                   return;
+               }
+               
                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
                String datumUclanjenjaString = icforma.getjTextFieldDatumUclanjenja().getText().trim();
                String datumIstekaString = icforma.getjTextFieldDatumIsteka().getText().trim();
+               
+               if (datumUclanjenjaString.isEmpty()) {
+                   JOptionPane.showMessageDialog(icforma, "Polje za datum uclanjenja ne sme biti prazno", "Greska", JOptionPane.ERROR_MESSAGE);
+                   return;
+               } 
+               
+               if (datumIstekaString.isEmpty()) {
+                   JOptionPane.showMessageDialog(icforma, "Polje za datum isteka clanarine ne sme biti prazno", "Greska", JOptionPane.ERROR_MESSAGE);
+                   return;
+               } 
                
                clanZaIzmenu.setImePrezime(imePrezime);
                clanZaIzmenu.setAdresaStanovanja(adresaStanovanja);
@@ -50,6 +71,7 @@ public class IzmeniClanaKontroler {
                    clanZaIzmenu.setDatumUclanjenja(datumUclanjenja);
                } catch (ParseException pex) {
                    JOptionPane.showMessageDialog(icforma, "Datum uclanjenja mora biti u odgovarajucem formatu", "Greska", JOptionPane.ERROR_MESSAGE);
+                   return;
                }
                
                try {                   
@@ -57,6 +79,7 @@ public class IzmeniClanaKontroler {
                    clanZaIzmenu.setDatumIsteka(datumIsteka);
                } catch (ParseException pex) {
                    JOptionPane.showMessageDialog(icforma, "Datum isteka mora biti u odgovarajucem formatu", "Greska", JOptionPane.ERROR_MESSAGE);
+                   return;
                }
                
               
