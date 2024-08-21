@@ -7,6 +7,7 @@ package kontroler;
 import domen.Autor;
 import domen.Clan;
 import domen.Knjiga;
+import domen.Pozajmica;
 import domen.Zaposleni;
 import java.util.List;
 import operacije.autor.UcitajAutoreSO;
@@ -19,6 +20,7 @@ import operacije.knjiga.IzmeniKnjiguSO;
 import operacije.knjiga.KreirajKnjiguSO;
 import operacije.knjiga.ObrisiKnjiguSO;
 import operacije.knjiga.UcitajKnjigeSO;
+import operacije.pozajmica.UcitajPozajmiceSO;
 
 /**
  *
@@ -94,5 +96,12 @@ public class Kontroler {
     public void izmeniKnjigu(Knjiga k) throws Exception {
         IzmeniKnjiguSO operacija = new IzmeniKnjiguSO();
         operacija.izvrsi(k, null);
+    }
+
+    public List<Pozajmica> ucitajPozajmice() throws Exception {
+        UcitajPozajmiceSO operacija = new UcitajPozajmiceSO();
+        operacija.izvrsi(null, null);
+        
+        return operacija.getPozajmice();
     }
 }

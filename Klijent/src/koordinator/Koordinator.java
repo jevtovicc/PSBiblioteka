@@ -15,6 +15,7 @@ import forme.clan.PregledClanovaForma;
 import forme.knjiga.DodajKnjiguForma;
 import forme.knjiga.IzmeniKnjiguForma;
 import forme.knjiga.PregledKnjigaForma;
+import forme.pozajmica.PregledPozajmicaForma;
 import kontroler.DodajClanaKontroler;
 import kontroler.DodajKnjiguKontroler;
 import kontroler.GlavnaFormaKontroler;
@@ -23,6 +24,7 @@ import kontroler.IzmeniKnjiguKontroler;
 import kontroler.LoginKontroler;
 import kontroler.PregledClanovaKontroler;
 import kontroler.PregledKnjigaKontroler;
+import kontroler.PregledPozajmicaKontroler;
 
 /**
  *
@@ -30,9 +32,11 @@ import kontroler.PregledKnjigaKontroler;
  */
 public class Koordinator {
     private static Koordinator instanca;
+    
     private Zaposleni ulogovani;
     private LoginKontroler loginKontroler;
     private GlavnaFormaKontroler glavnaFormaKontroler;
+    
     private PregledClanovaKontroler pregledClanovaKontroler;
     private DodajClanaKontroler dodajClanaKontroler;
     private IzmeniClanaKontroler izmeniClanaKontroler;
@@ -40,6 +44,8 @@ public class Koordinator {
     private PregledKnjigaKontroler pregledKnjigaKontroler;
     private DodajKnjiguKontroler dodajKnjiguKontroler;
     private IzmeniKnjiguKontroler izmeniKnjiguKontroler;
+    
+    private PregledPozajmicaKontroler pregledPozajmicaKontroler;
     
     private Koordinator() {
         
@@ -106,6 +112,11 @@ public class Koordinator {
 
     public void osveziPregledKnjigaFormu() {
         pregledKnjigaKontroler.pripremiFormu();
+    }
+
+    public void otvoriPregledPozajmicaFormu() {
+        pregledPozajmicaKontroler = new PregledPozajmicaKontroler(new PregledPozajmicaForma());
+        pregledPozajmicaKontroler.otvoriFormu();
     }
     
     

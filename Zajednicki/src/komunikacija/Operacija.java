@@ -19,5 +19,6 @@ public enum Operacija implements Serializable {
     OBRISI_KNJIGU, 
     UCITAJ_AUTORE, 
     DODAJ_KNJIGU, 
-    IZMENI_KNJIGU
+    IZMENI_KNJIGU, 
+    UCITAJ_POZAJMICE
 }

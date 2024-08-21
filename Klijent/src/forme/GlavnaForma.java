@@ -38,6 +38,9 @@ public class GlavnaForma extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItemDodajKnjigu = new javax.swing.JMenuItem();
         jMenuItemPregledKnjiga = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItemPregledPozajmica = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,6 +88,21 @@ public class GlavnaForma extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        jMenu3.setText("Pozajmice");
+
+        jMenuItem1.setText("Dodaj");
+        jMenu3.add(jMenuItem1);
+
+        jMenuItemPregledPozajmica.setText("Pregled");
+        jMenuItemPregledPozajmica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemPregledPozajmicaActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItemPregledPozajmica);
+
+        jMenuBar1.add(jMenu3);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -127,6 +145,10 @@ public class GlavnaForma extends javax.swing.JFrame {
         Koordinator.getInstanca().otvoriPregledKnjigaFormu();
     }//GEN-LAST:event_jMenuItemPregledKnjigaActionPerformed
 
+    private void jMenuItemPregledPozajmicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPregledPozajmicaActionPerformed
+        Koordinator.getInstanca().otvoriPregledPozajmicaFormu();
+    }//GEN-LAST:event_jMenuItemPregledPozajmicaActionPerformed
+
     public JLabel getjLabelUlogovani() {
         return jLabelUlogovani;
     }    
@@ -136,10 +158,13 @@ public class GlavnaForma extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelUlogovani;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItemDodajClana;
     private javax.swing.JMenuItem jMenuItemDodajKnjigu;
     private javax.swing.JMenuItem jMenuItemPregledClana;
     private javax.swing.JMenuItem jMenuItemPregledKnjiga;
+    private javax.swing.JMenuItem jMenuItemPregledPozajmica;
     // End of variables declaration//GEN-END:variables
 }

@@ -7,6 +7,7 @@ package niti;
 import domen.Autor;
 import domen.Clan;
 import domen.Knjiga;
+import domen.Pozajmica;
 import domen.Zaposleni;
 import java.io.IOException;
 import java.net.Socket;
@@ -111,6 +112,9 @@ public class ObradaKlijentskihZahteva extends Thread {
                         List<Autor> autori = Kontroler.getInstanca().ucitajAutore();
                         odgovor.setOdgovor(autori);
                     break;
+                    case UCITAJ_POZAJMICE:
+                        List<Pozajmica> pozajmice = Kontroler.getInstanca().ucitajPozajmice();
+                        odgovor.setOdgovor(pozajmice);
                     default: System.out.println("Greska. Operacija ne postoji.");
                 }
 

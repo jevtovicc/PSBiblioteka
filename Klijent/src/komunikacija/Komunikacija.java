@@ -7,6 +7,7 @@ package komunikacija;
 import domen.Autor;
 import domen.Clan;
 import domen.Knjiga;
+import domen.Pozajmica;
 import domen.Zaposleni;
 import java.io.IOException;
 import java.net.Socket;
@@ -153,5 +154,15 @@ public class Komunikacija {
         } else {
             Koordinator.getInstanca().osveziPregledKnjigaFormu();
         }
+    }
+
+    public List<Pozajmica> ucitajPozajmice() {
+        Zahtev zahtev = new Zahtev(Operacija.UCITAJ_POZAJMICE, null);
+        posiljalac.posalji(zahtev);
+        
+        Odgovor odgovor = (Odgovor) primalac.primi();
+        List<Pozajmica> pozajmice = (List<Pozajmica>) odgovor.getOdgovor();
+        
+        return pozajmice;
     }
 }

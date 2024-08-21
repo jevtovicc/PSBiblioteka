@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,15 +19,17 @@ public class Pozajmica implements ApstraktniDomenskiObjekat {
     private Clan clan;
     private Knjiga knjiga;
     private Date datumPozajmice;
+    private Date datumVracanja;
 
     public Pozajmica() {
     }
 
-    public Pozajmica(long pozajmicaID, Clan clan, Knjiga knjiga, Date datumPozajmice) {
+    public Pozajmica(long pozajmicaID, Clan clan, Knjiga knjiga, Date datumPozajmice, Date datumVracanja) {
         this.pozajmicaID = pozajmicaID;
         this.clan = clan;
         this.knjiga = knjiga;
         this.datumPozajmice = datumPozajmice;
+        this.datumVracanja = datumVracanja;
     }
 
     public long getPozajmicaID() {
@@ -61,6 +64,14 @@ public class Pozajmica implements ApstraktniDomenskiObjekat {
         this.datumPozajmice = datumPozajmice;
     }
 
+    public Date getDatumVracanja() {
+        return datumVracanja;
+    }
+
+    public void setDatumVracanja(Date datumVracanja) {
+        this.datumVracanja = datumVracanja;
+    }
+
     @Override
     public String toString() {
         return "Pozajmica{" + "clan=" + clan + ", knjiga=" + knjiga + '}';
@@ -73,6 +84,7 @@ public class Pozajmica implements ApstraktniDomenskiObjekat {
         hash = 47 * hash + Objects.hashCode(this.clan);
         hash = 47 * hash + Objects.hashCode(this.knjiga);
         hash = 47 * hash + Objects.hashCode(this.datumPozajmice);
+        hash = 47 * hash + Objects.hashCode(this.datumVracanja);
         return hash;
     }
 
@@ -97,7 +109,10 @@ public class Pozajmica implements ApstraktniDomenskiObjekat {
         if (!Objects.equals(this.knjiga, other.knjiga)) {
             return false;
         }
-        return Objects.equals(this.datumPozajmice, other.datumPozajmice);
+        if (!Objects.equals(this.datumPozajmice, other.datumPozajmice)) {
+            return false;
+        }
+        return Objects.equals(this.datumVracanja, other.datumVracanja);
     }
 
     @Override
@@ -107,17 +122,45 @@ public class Pozajmica implements ApstraktniDomenskiObjekat {
 
     @Override
     public List<ApstraktniDomenskiObjekat> vratiListu(ResultSet rs) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<ApstraktniDomenskiObjekat> lista = new ArrayList<>();
+        
+        while(rs.next()) {
+            long pozajmicaID = rs.getLong("pozajmicaID");
+            Date datumPozajmice = rs.getDate("datumPozajmice");
+            Date datumVracanja = rs.getDate("datumVracanja");
+            
+            long autorID = rs.getLong("autorID");
+            String autorImePrezime = rs.getString(17);
+            Autor a = new Autor(autorID, autorImePrezime);
+            
+            long knjigaID = rs.getLong("knjigaID");
+            String nazivKnjige = rs.getString("nazivKnjige");
+            String ISBN = rs.getString("ISBN");
+            int kolicina = rs.getInt("kolicina");
+            Knjiga k = new Knjiga(knjigaID, nazivKnjige, ISBN, kolicina, a);           
+            
+            long clanID = rs.getLong("clanID");
+            String clanImePrezime = rs.getString(7);
+            String adresaStanovanja = rs.getString("adresaStanovanja");
+            Date datumUclanjenja = rs.getDate("datumUclanjenja");
+            Date datumIsteka = rs.getDate("datumIsteka");
+            Clan c = new Clan(clanID, clanImePrezime, adresaStanovanja, datumUclanjenja, datumIsteka);
+            
+            Pozajmica p = new Pozajmica(pozajmicaID, c, k, datumPozajmice, datumVracanja);
+            lista.add(p);
+        }
+        
+        return lista;
     }
 
     @Override
     public String vratiKoloneZaUbacivanje() {
-        return "clanID, knjigaID, datumPozajmice";
+        return "clanID, knjigaID, datumPozajmice, datumVracanja";
     }
 
     @Override
     public String vratiVrednostiZaUbacivanje() {
-        return this.clan.getClanID() + "," + this.knjiga.getKnjigaID() + ",'" + this.datumPozajmice + "'";
+        return clan.getClanID() + "," + knjiga.getKnjigaID() + ",'" + datumPozajmice + ",'" + datumPozajmice + "'";
     }
 
     @Override
@@ -132,7 +175,7 @@ public class Pozajmica implements ApstraktniDomenskiObjekat {
 
     @Override
     public String vratiVrednostZaIzmenu() {
-        return "clanID=" + this.clan.getClanID() + ", knjigaID=" + this.knjiga.getKnjigaID() + ", datumPozajmice='" + this.datumPozajmice + "'";
+        return "clanID=" + clan.getClanID() + ", knjigaID=" + knjiga.getKnjigaID() + ", datumPozajmice='" + datumPozajmice + "', datumVracanja=" + datumVracanja;
     }
 
     @Override
