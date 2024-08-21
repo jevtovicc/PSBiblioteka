@@ -36,8 +36,29 @@ public class DodajClanaKontroler {
            private void dodaj(ActionEvent e) {
                String imePrezime = dcforma.getjTextFieldImePrezime().getText().trim();
                String adresaStanovanja = dcforma.getjTextFieldAdresa().getText().trim();
+               
+               if (imePrezime.isEmpty()) {
+                   JOptionPane.showMessageDialog(dcforma, "Polje za ime i prezime ne sme biti prazno", "Greska", JOptionPane.ERROR_MESSAGE);
+                   return;
+               } 
+               
+               if (adresaStanovanja.isEmpty()) {
+                   JOptionPane.showMessageDialog(dcforma, "Polje za adresu ne sme biti prazno", "Greska", JOptionPane.ERROR_MESSAGE);
+                   return;
+               } 
+               
                String datumUclanjenjaString = dcforma.getjTextFieldDatumUclanjenja().getText().trim();
                String datumIstekaString = dcforma.getjTextFieldDatumIsteka().getText().trim();
+               
+               if (datumUclanjenjaString.isEmpty()) {
+                   JOptionPane.showMessageDialog(dcforma, "Polje za datum uclanjenja ne sme biti prazno", "Greska", JOptionPane.ERROR_MESSAGE);
+                   return;
+               } 
+               
+               if (datumIstekaString.isEmpty()) {
+                   JOptionPane.showMessageDialog(dcforma, "Polje za datum isteka clanarine ne sme biti prazno", "Greska", JOptionPane.ERROR_MESSAGE);
+                   return;
+               } 
                
                Clan c = new Clan();
                c.setImePrezime(imePrezime);
@@ -49,6 +70,7 @@ public class DodajClanaKontroler {
                    c.setDatumUclanjenja(datumUclanjenja);
                } catch (ParseException pex) {
                    JOptionPane.showMessageDialog(dcforma, "Datum uclanjenja mora biti u odgovarajucem formatu", "Greska", JOptionPane.ERROR_MESSAGE);
+                   return;
                }
                
                try {                   
@@ -56,9 +78,8 @@ public class DodajClanaKontroler {
                    c.setDatumIsteka(datumIsteka);
                } catch (ParseException pex) {
                    JOptionPane.showMessageDialog(dcforma, "Datum isteka mora biti u odgovarajucem formatu", "Greska", JOptionPane.ERROR_MESSAGE);
+                   return;
                }
-               
-               System.out.println("Kreiranje clanae");
                
                try {
                    Komunikacija.getInstanca().dodajClana(c);

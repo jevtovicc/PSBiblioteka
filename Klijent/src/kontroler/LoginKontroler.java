@@ -35,6 +35,17 @@ public class LoginKontroler {
                String korIme = lf.getjTextFieldKorisnickoIme().getText().trim();
                String lozinka = String.valueOf(lf.getjPasswordFieldLozinka().getPassword()).trim();
                
+               if (korIme.isEmpty()) {
+                   JOptionPane.showMessageDialog(lf, "Polje za korisnicko ime ne sme biti prazno", "Greska", JOptionPane.ERROR_MESSAGE);
+                   return;
+               }
+               
+               if (lozinka.isEmpty()) {
+                   JOptionPane.showMessageDialog(lf, "Polje za lozinku ne sme biti prazno", "Greska", JOptionPane.ERROR_MESSAGE);
+                   return;
+               }
+               
+               
                Komunikacija.getInstanca().konekcija();
                Zaposleni z = Komunikacija.getInstanca().login(korIme, lozinka);
                if(z == null) {
