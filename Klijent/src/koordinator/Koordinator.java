@@ -15,9 +15,11 @@ import forme.clan.PregledClanovaForma;
 import forme.knjiga.DodajKnjiguForma;
 import forme.knjiga.IzmeniKnjiguForma;
 import forme.knjiga.PregledKnjigaForma;
+import forme.pozajmica.DodajPozajmicuForma;
 import forme.pozajmica.PregledPozajmicaForma;
 import kontroler.DodajClanaKontroler;
 import kontroler.DodajKnjiguKontroler;
+import kontroler.DodajPozajmicuKontroler;
 import kontroler.GlavnaFormaKontroler;
 import kontroler.IzmeniClanaKontroler;
 import kontroler.IzmeniKnjiguKontroler;
@@ -46,6 +48,7 @@ public class Koordinator {
     private IzmeniKnjiguKontroler izmeniKnjiguKontroler;
     
     private PregledPozajmicaKontroler pregledPozajmicaKontroler;
+    private DodajPozajmicuKontroler dodajPozajmicuKontroler;
     
     private Koordinator() {
         
@@ -117,6 +120,11 @@ public class Koordinator {
     public void otvoriPregledPozajmicaFormu() {
         pregledPozajmicaKontroler = new PregledPozajmicaKontroler(new PregledPozajmicaForma());
         pregledPozajmicaKontroler.otvoriFormu();
+    }
+
+    public void otvoriDodajPozajmicuFormu() {
+        dodajPozajmicuKontroler = new DodajPozajmicuKontroler(new DodajPozajmicuForma());
+        dodajPozajmicuKontroler.otvoriFormu();
     }
     
     

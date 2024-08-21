@@ -20,6 +20,7 @@ import operacije.knjiga.IzmeniKnjiguSO;
 import operacije.knjiga.KreirajKnjiguSO;
 import operacije.knjiga.ObrisiKnjiguSO;
 import operacije.knjiga.UcitajKnjigeSO;
+import operacije.pozajmica.KreirajPozajmicuSO;
 import operacije.pozajmica.UcitajPozajmiceSO;
 
 /**
@@ -103,5 +104,10 @@ public class Kontroler {
         operacija.izvrsi(null, null);
         
         return operacija.getPozajmice();
+    }
+
+    public void dodajPozajmicu(Pozajmica p) throws Exception {
+        KreirajPozajmicuSO operacija = new KreirajPozajmicuSO();
+        operacija.izvrsi(p, null);
     }
 }

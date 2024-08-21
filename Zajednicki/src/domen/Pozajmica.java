@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -160,7 +161,11 @@ public class Pozajmica implements ApstraktniDomenskiObjekat {
 
     @Override
     public String vratiVrednostiZaUbacivanje() {
-        return clan.getClanID() + "," + knjiga.getKnjigaID() + ",'" + datumPozajmice + ",'" + datumPozajmice + "'";
+        String outputPattern = "yyyy-MM-dd";
+        SimpleDateFormat sdf = new SimpleDateFormat(outputPattern);
+        String datumPozajmiceString = sdf.format(datumPozajmice);
+        String datumVracanjaString = sdf.format(datumVracanja);
+        return clan.getClanID() + "," + knjiga.getKnjigaID() + ",'" + datumPozajmiceString + "','" + datumVracanjaString + "'";
     }
 
     @Override
@@ -175,7 +180,11 @@ public class Pozajmica implements ApstraktniDomenskiObjekat {
 
     @Override
     public String vratiVrednostZaIzmenu() {
-        return "clanID=" + clan.getClanID() + ", knjigaID=" + knjiga.getKnjigaID() + ", datumPozajmice='" + datumPozajmice + "', datumVracanja=" + datumVracanja;
+        String outputPattern = "yyyy-MM-dd";
+        SimpleDateFormat sdf = new SimpleDateFormat(outputPattern);
+        String datumPozajmiceString = sdf.format(datumPozajmice);
+        String datumVracanjaString = sdf.format(datumVracanja);
+        return "clanID=" + clan.getClanID() + ", knjigaID=" + knjiga.getKnjigaID() + ", datumPozajmice='" + datumPozajmiceString + "', datumVracanja=" + datumVracanjaString;
     }
 
     @Override

@@ -68,7 +68,7 @@ public class ObradaKlijentskihZahteva extends Thread {
                         } catch(Exception e) {
                             odgovor.setOdgovor(e);
                         }
-                    break;
+                        break;
                     case IZMENI_CLANA:
                         try {
                             Clan c = (Clan) zahtev.getParametar();
@@ -77,7 +77,7 @@ public class ObradaKlijentskihZahteva extends Thread {
                         } catch(Exception e) {
                             odgovor.setOdgovor(e);
                         }
-                    break;
+                        break;
                     case UCITAJ_KNJIGE:
                         List<Knjiga> knjige = Kontroler.getInstanca().ucitajKnjige();
                         odgovor.setOdgovor(knjige);
@@ -90,7 +90,7 @@ public class ObradaKlijentskihZahteva extends Thread {
                         } catch(Exception e) {
                             odgovor.setOdgovor(e);
                         }
-                    break;
+                        break;
                     case IZMENI_KNJIGU:
                         try {
                             Knjiga k = (Knjiga) zahtev.getParametar();
@@ -99,7 +99,7 @@ public class ObradaKlijentskihZahteva extends Thread {
                         } catch(Exception e) {
                             odgovor.setOdgovor(e);
                         }
-                    break;
+                        break;
                     case OBRISI_KNJIGU:
                         try {
                             Knjiga k = (Knjiga) zahtev.getParametar();
@@ -108,13 +108,24 @@ public class ObradaKlijentskihZahteva extends Thread {
                         } catch(Exception e) {
                             odgovor.setOdgovor(e);
                         }
+                        break;
                     case UCITAJ_AUTORE:
                         List<Autor> autori = Kontroler.getInstanca().ucitajAutore();
                         odgovor.setOdgovor(autori);
-                    break;
+                        break;
                     case UCITAJ_POZAJMICE:
                         List<Pozajmica> pozajmice = Kontroler.getInstanca().ucitajPozajmice();
                         odgovor.setOdgovor(pozajmice);
+                        break;
+                    case DODAJ_POZAJMICU:
+                        try {
+                            Pozajmica p = (Pozajmica) zahtev.getParametar();
+                            Kontroler.getInstanca().dodajPozajmicu(p);                            
+                            odgovor.setOdgovor(null);
+                        } catch(Exception e) {
+                            odgovor.setOdgovor(e);
+                        }
+                        break;
                     default: System.out.println("Greska. Operacija ne postoji.");
                 }
 

@@ -91,6 +91,11 @@ public class GlavnaForma extends javax.swing.JFrame {
         jMenu3.setText("Pozajmice");
 
         jMenuItem1.setText("Dodaj");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem1);
 
         jMenuItemPregledPozajmica.setText("Pregled");
@@ -148,6 +153,10 @@ public class GlavnaForma extends javax.swing.JFrame {
     private void jMenuItemPregledPozajmicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPregledPozajmicaActionPerformed
         Koordinator.getInstanca().otvoriPregledPozajmicaFormu();
     }//GEN-LAST:event_jMenuItemPregledPozajmicaActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        Koordinator.getInstanca().otvoriDodajPozajmicuFormu();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     public JLabel getjLabelUlogovani() {
         return jLabelUlogovani;

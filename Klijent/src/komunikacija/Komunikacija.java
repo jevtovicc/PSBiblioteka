@@ -165,4 +165,14 @@ public class Komunikacija {
         
         return pozajmice;
     }
+
+    public void dodajPozajmicu(Pozajmica p) throws Exception {
+        Zahtev zahtev = new Zahtev(Operacija.DODAJ_POZAJMICU, p);
+        posiljalac.posalji(zahtev);
+        
+        Odgovor odgovor = (Odgovor) primalac.primi();
+        if (odgovor.getOdgovor() instanceof Exception e) {
+            throw new Exception(e);
+        }
+    }
 }
