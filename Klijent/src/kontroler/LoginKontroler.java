@@ -45,8 +45,6 @@ public class LoginKontroler {
                    return;
                }
                
-               
-               Komunikacija.getInstanca().konekcija();
                Zaposleni z = Komunikacija.getInstanca().login(korIme, lozinka);
                if(z == null) {
                    JOptionPane.showMessageDialog(lf, "Prijava na sistem neuspesna", "Greska", JOptionPane.ERROR_MESSAGE);

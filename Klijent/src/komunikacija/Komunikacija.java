@@ -25,25 +25,25 @@ public class Komunikacija {
     private Primalac primalac;
     private static Komunikacija instanca;
     
-    private Komunikacija() {
-        
+    private Komunikacija() throws IOException {
+        konekcija();
     }
     
-    public static Komunikacija getInstanca() {
+    public static Komunikacija getInstanca() throws IOException {
         if(instanca == null) {
             instanca = new Komunikacija();
         }
         return instanca;
     }
     
-    public void konekcija() {
+    private void konekcija() throws IOException {
         try {
             soket = new Socket("localhost", 9000);
             posiljalac = new Posiljalac(soket);
             primalac = new Primalac(soket);
         } catch (IOException ex) {
-            System.out.println("NEUSPESNO POVEZIVANJE SA SERVEROM");
-            ex.printStackTrace();
+            System.out.println("NEUSPESNO POVEZIVANJE SA SERVEROM");            
+            throw ex;
         }
         
     }

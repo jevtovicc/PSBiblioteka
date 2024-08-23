@@ -17,6 +17,8 @@ import forme.knjiga.IzmeniKnjiguForma;
 import forme.knjiga.PregledKnjigaForma;
 import forme.zaduzenje.DodajZaduzenjeForma;
 import forme.zaduzenje.PregledZaduzenjaForma;
+import javax.swing.JOptionPane;
+import komunikacija.Komunikacija;
 import kontroler.DodajClanaKontroler;
 import kontroler.DodajKnjiguKontroler;
 import kontroler.DodajZaduzenjeKontroler;
@@ -62,8 +64,14 @@ public class Koordinator {
     }
 
     public void otvoriLoginFormu() {
-        loginKontroler = new LoginKontroler(new LoginForma());
-        loginKontroler.otvoriFormu();
+        try {
+            Komunikacija.getInstanca();
+            loginKontroler = new LoginKontroler(new LoginForma());
+            loginKontroler.otvoriFormu();
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(null, "Server nije pokrenut", "Greska", JOptionPane.ERROR_MESSAGE);
+        }
+        
     }
 
     public void otvoriGlavnuFormu() {
