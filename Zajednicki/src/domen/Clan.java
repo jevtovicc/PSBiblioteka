@@ -111,7 +111,7 @@ public class Clan implements ApstraktniDomenskiObjekat {
 
     @Override
     public String vratiNazivTabele() {
-        return "Clan";
+        return "clan";
     }
 
     @Override
@@ -119,11 +119,11 @@ public class Clan implements ApstraktniDomenskiObjekat {
         List<ApstraktniDomenskiObjekat> lista = new ArrayList<>();
         
         while(rs.next()) {
-            long clanID = rs.getLong("clanID");
-            String imePrezime = rs.getString("imePrezime");
-            String adresaStanovanja = rs.getString("adresaStanovanja");
-            Date datumUclanjenja = rs.getDate("datumUclanjenja");
-            Date datumIsteka = rs.getDate("datumIsteka");
+            long clanID = rs.getLong("clan_id");
+            String imePrezime = rs.getString("ime_prezime");
+            String adresaStanovanja = rs.getString("adresa_stanovanja");
+            Date datumUclanjenja = rs.getDate("datum_uclanjenja");
+            Date datumIsteka = rs.getDate("datum_isteka");
             Clan c = new Clan(clanID, imePrezime, adresaStanovanja, datumUclanjenja, datumIsteka);
             lista.add(c);
         }
@@ -133,7 +133,7 @@ public class Clan implements ApstraktniDomenskiObjekat {
 
     @Override
     public String vratiKoloneZaUbacivanje() {
-        return "imePrezime, adresaStanovanja, datumUclanjenja, datumIsteka";
+        return "ime_prezime, adresa_stanovanja, datum_uclanjenja, datum_isteka";
     }
 
     @Override
@@ -147,7 +147,7 @@ public class Clan implements ApstraktniDomenskiObjekat {
 
     @Override
     public String vratiPrimarniKljuc() {
-        return "clanID=" + clanID;
+        return "clan_id=" + clanID;
     }
 
     @Override
@@ -161,7 +161,7 @@ public class Clan implements ApstraktniDomenskiObjekat {
         SimpleDateFormat sdf = new SimpleDateFormat(outputPattern);
         String datumUclanjenjaString = sdf.format(datumUclanjenja);
         String datumIstekaString = sdf.format(datumIsteka);
-        return "imePrezime='" + imePrezime + "', adresaStanovanja='" + adresaStanovanja + "', datumUclanjenja='" + datumUclanjenjaString + "', datumIsteka='" + datumIstekaString + "'";
+        return "ime_prezime='" + imePrezime + "', adresa_stanovanja='" + adresaStanovanja + "', datum_uclanjenja='" + datumUclanjenjaString + "', datum_isteka='" + datumIstekaString + "'";
     }
 
     @Override

@@ -6,10 +6,10 @@ package kontroler;
 
 import domen.Clan;
 import domen.Knjiga;
-import domen.Pozajmica;
+import domen.Zaduzenje;
 import forme.model.ModelTabeleClan;
 import forme.model.ModelTabeleKnjiga;
-import forme.pozajmica.DodajPozajmicuForma;
+import forme.zaduzenje.DodajZaduzenjeForma;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
@@ -23,10 +23,10 @@ import komunikacija.Komunikacija;
  *
  * @author filipjevtovic
  */
-public class DodajPozajmicuKontroler {
-    private final DodajPozajmicuForma dpf;
+public class DodajZaduzenjeKontroler {
+    private final DodajZaduzenjeForma dpf;
     
-    public DodajPozajmicuKontroler(DodajPozajmicuForma dpf) {
+    public DodajZaduzenjeKontroler(DodajZaduzenjeForma dpf) {
         this.dpf = dpf;
         addActionListeners();
     }
@@ -39,33 +39,33 @@ public class DodajPozajmicuKontroler {
            }
            
            private void dodaj(ActionEvent e) {   
-               Pozajmica p = new Pozajmica();
+               Zaduzenje p = new Zaduzenje();
                
                String datumIznajmljivanjaString = dpf.getjTextFieldDatumPozajmice().getText().trim();
                String datumVracanjaString = dpf.getjTextFieldDatumVracanja().getText().trim();
                
                if (datumIznajmljivanjaString.isEmpty()) {
-                   JOptionPane.showMessageDialog(dpf, "Polje za datum pozajmice ne sme biti prazno", "Greska", JOptionPane.ERROR_MESSAGE);
+                   JOptionPane.showMessageDialog(dpf, "Polje za datum zaduzenja ne sme biti prazno", "Greska", JOptionPane.ERROR_MESSAGE);
                    return;
                } 
                
                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
                try {                   
                    Date datumIznajmljivanja = formatter.parse(datumIznajmljivanjaString);
-                   p.setDatumPozajmice(datumIznajmljivanja);
+                   p.setDatumZaduzenja(datumIznajmljivanja);
                } catch (ParseException pex) {
-                   JOptionPane.showMessageDialog(dpf, "Datum pozajmice mora biti u odgovarajucem formatu", "Greska", JOptionPane.ERROR_MESSAGE);
+                   JOptionPane.showMessageDialog(dpf, "Datum zaduzenja mora biti u odgovarajucem formatu", "Greska", JOptionPane.ERROR_MESSAGE);
                    return;
                }
                
                if (datumVracanjaString == null || datumVracanjaString.isEmpty()) {
-                   p.setDatumVracanja(null);
+                   p.setDatumRazduzenja(null);
                } else {
                    try {                   
                        Date datumVracanja = formatter.parse(datumVracanjaString);
-                       p.setDatumVracanja(datumVracanja);
+                       p.setDatumRazduzenja(datumVracanja);
                    } catch (ParseException pex) {
-                       JOptionPane.showMessageDialog(dpf, "Datum vracanja mora biti u odgovarajucem formatu", "Greska", JOptionPane.ERROR_MESSAGE);
+                       JOptionPane.showMessageDialog(dpf, "Datum razduzenja mora biti u odgovarajucem formatu", "Greska", JOptionPane.ERROR_MESSAGE);
                        return;
                    }
                }
@@ -93,7 +93,7 @@ public class DodajPozajmicuKontroler {
                
                try {
                     Komunikacija.getInstanca().dodajPozajmicu(p);
-                    JOptionPane.showMessageDialog(dpf, "Sistem je kreirao pozajmicu", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(dpf, "Sistem je kreirao zaduzenje", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
                     dpf.dispose();
                 } catch(Exception ex) {
                     String porukaGreske = ex.getMessage();

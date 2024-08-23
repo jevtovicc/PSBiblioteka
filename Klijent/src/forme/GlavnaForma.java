@@ -39,8 +39,8 @@ public class GlavnaForma extends javax.swing.JFrame {
         jMenuItemDodajKnjigu = new javax.swing.JMenuItem();
         jMenuItemPregledKnjiga = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItemPregledPozajmica = new javax.swing.JMenuItem();
+        jMenuItemDodajZaduzenje = new javax.swing.JMenuItem();
+        jMenuItemPregledZaduzenja = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,23 +88,23 @@ public class GlavnaForma extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setText("Pozajmice");
+        jMenu3.setText("Zaduzenje");
 
-        jMenuItem1.setText("Dodaj");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemDodajZaduzenje.setText("Dodaj");
+        jMenuItemDodajZaduzenje.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenuItemDodajZaduzenjeActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem1);
+        jMenu3.add(jMenuItemDodajZaduzenje);
 
-        jMenuItemPregledPozajmica.setText("Pregled");
-        jMenuItemPregledPozajmica.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemPregledZaduzenja.setText("Pregled");
+        jMenuItemPregledZaduzenja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemPregledPozajmicaActionPerformed(evt);
+                jMenuItemPregledZaduzenjaActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItemPregledPozajmica);
+        jMenu3.add(jMenuItemPregledZaduzenja);
 
         jMenuBar1.add(jMenu3);
 
@@ -150,13 +150,13 @@ public class GlavnaForma extends javax.swing.JFrame {
         Koordinator.getInstanca().otvoriPregledKnjigaFormu();
     }//GEN-LAST:event_jMenuItemPregledKnjigaActionPerformed
 
-    private void jMenuItemPregledPozajmicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPregledPozajmicaActionPerformed
+    private void jMenuItemPregledZaduzenjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPregledZaduzenjaActionPerformed
         Koordinator.getInstanca().otvoriPregledPozajmicaFormu();
-    }//GEN-LAST:event_jMenuItemPregledPozajmicaActionPerformed
+    }//GEN-LAST:event_jMenuItemPregledZaduzenjaActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jMenuItemDodajZaduzenjeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDodajZaduzenjeActionPerformed
         Koordinator.getInstanca().otvoriDodajPozajmicuFormu();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jMenuItemDodajZaduzenjeActionPerformed
 
     public JLabel getjLabelUlogovani() {
         return jLabelUlogovani;
@@ -169,11 +169,11 @@ public class GlavnaForma extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItemDodajClana;
     private javax.swing.JMenuItem jMenuItemDodajKnjigu;
+    private javax.swing.JMenuItem jMenuItemDodajZaduzenje;
     private javax.swing.JMenuItem jMenuItemPregledClana;
     private javax.swing.JMenuItem jMenuItemPregledKnjiga;
-    private javax.swing.JMenuItem jMenuItemPregledPozajmica;
+    private javax.swing.JMenuItem jMenuItemPregledZaduzenja;
     // End of variables declaration//GEN-END:variables
 }

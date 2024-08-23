@@ -5,10 +5,10 @@
 package kontroler;
 
 import domen.Knjiga;
-import domen.Pozajmica;
+import domen.Zaduzenje;
 import forme.model.ModelTabeleKnjiga;
-import forme.model.ModelTabelePozajmica;
-import forme.pozajmica.PregledPozajmicaForma;
+import forme.model.ModelTabeleZaduzenje;
+import forme.zaduzenje.PregledZaduzenjaForma;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -17,10 +17,10 @@ import java.util.List;
  *
  * @author filipjevtovic
  */
-public class PregledPozajmicaKontroler {
-    private PregledPozajmicaForma ppf;
+public class PregledZaduzenjaKontroler {
+    private PregledZaduzenjaForma ppf;
 
-    public PregledPozajmicaKontroler(PregledPozajmicaForma ppf) {
+    public PregledZaduzenjaKontroler(PregledZaduzenjaForma ppf) {
         this.ppf = ppf;
         addActionListeners();
     }
@@ -32,7 +32,7 @@ public class PregledPozajmicaKontroler {
             public void actionPerformed(ActionEvent e) {
                 String imePrezimeClana = ppf.getjTextFieldImePrezimeClana().getText().trim();
                 String nazivKnjige = ppf.getjTextFieldNazivKnjige().getText().trim();
-                ModelTabelePozajmica mtp = (ModelTabelePozajmica) ppf.getjTablePozajmice().getModel();
+                ModelTabeleZaduzenje mtp = (ModelTabeleZaduzenje) ppf.getjTablePozajmice().getModel();
                 mtp.pretrazi(imePrezimeClana, nazivKnjige);
             }
         });
@@ -53,8 +53,8 @@ public class PregledPozajmicaKontroler {
     }
 
     public void pripremiFormu() {
-        List<Pozajmica> pozajmice = komunikacija.Komunikacija.getInstanca().ucitajPozajmice();
-        ModelTabelePozajmica mtp = new ModelTabelePozajmica(pozajmice);
+        List<Zaduzenje> pozajmice = komunikacija.Komunikacija.getInstanca().ucitajPozajmice();
+        ModelTabeleZaduzenje mtp = new ModelTabeleZaduzenje(pozajmice);
         ppf.getjTablePozajmice().setModel(mtp);
     }
 }

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package forme.pozajmica;
+package forme.zaduzenje;
 
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -13,12 +13,12 @@ import javax.swing.JTextField;
  *
  * @author filipjevtovic
  */
-public class DodajPozajmicuForma extends javax.swing.JFrame {
+public class DodajZaduzenjeForma extends javax.swing.JFrame {
 
     /**
      * Creates new form DodajPozajmicu
      */
-    public DodajPozajmicuForma() {
+    public DodajZaduzenjeForma() {
         initComponents();
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
