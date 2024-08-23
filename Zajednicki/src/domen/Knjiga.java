@@ -117,7 +117,7 @@ public class Knjiga implements ApstraktniDomenskiObjekat {
 
     @Override
     public String vratiNazivTabele() {
-        return "Knjiga";
+        return "knjiga";
     }
 
     @Override
@@ -125,14 +125,14 @@ public class Knjiga implements ApstraktniDomenskiObjekat {
         List<ApstraktniDomenskiObjekat> lista = new ArrayList<>();
         
         while(rs.next()) {
-            long knjigaID = rs.getLong("knjigaID");
-            String nazivKnjige = rs.getString("nazivKnjige");
-            String ISBN = rs.getString("ISBN");
-            long autorID = rs.getLong("autorID");
+            long knjigaID = rs.getLong("knjiga_id");
+            String nazivKnjige = rs.getString("naziv_knjige");
+            String ISBN = rs.getString("isbn");
+            long autorID = rs.getLong("autor_id");
             int kolicina = rs.getInt("kolicina");
             
             // Todo: Kreirati autora
-            String imePrezimeAutora = rs.getString("imePrezime");
+            String imePrezimeAutora = rs.getString("ime_prezime");
             Autor a = new Autor(autorID, imePrezimeAutora);
             
             Knjiga k = new Knjiga(knjigaID, nazivKnjige, ISBN, kolicina, a);
@@ -144,7 +144,7 @@ public class Knjiga implements ApstraktniDomenskiObjekat {
 
     @Override
     public String vratiKoloneZaUbacivanje() {
-        return "nazivKnjige, ISBN, kolicina, autorID";
+        return "naziv_knjige, isbn, kolicina, autor_id";
     }
 
     @Override
@@ -154,7 +154,7 @@ public class Knjiga implements ApstraktniDomenskiObjekat {
 
     @Override
     public String vratiPrimarniKljuc() {
-        return "knjigaID=" + knjigaID;
+        return "knjiga_id=" + knjigaID;
     }
 
     @Override
@@ -164,7 +164,7 @@ public class Knjiga implements ApstraktniDomenskiObjekat {
 
     @Override
     public String vratiVrednostZaIzmenu() {
-        return "nazivKnjige='" + this.nazivKnjige + "', ISBN='" + this.ISBN + "', autorID=" + this.autor.getAutorID() + ", kolicina=" + this.kolicina;
+        return "naziv_knjige='" + this.nazivKnjige + "', isbn='" + this.ISBN + "', autor_id=" + this.autor.getAutorID() + ", kolicina=" + this.kolicina;
     }
 
     @Override

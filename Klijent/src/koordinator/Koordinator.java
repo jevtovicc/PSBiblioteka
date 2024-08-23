@@ -15,18 +15,18 @@ import forme.clan.PregledClanovaForma;
 import forme.knjiga.DodajKnjiguForma;
 import forme.knjiga.IzmeniKnjiguForma;
 import forme.knjiga.PregledKnjigaForma;
-import forme.pozajmica.DodajPozajmicuForma;
-import forme.pozajmica.PregledPozajmicaForma;
+import forme.zaduzenje.DodajZaduzenjeForma;
+import forme.zaduzenje.PregledZaduzenjaForma;
 import kontroler.DodajClanaKontroler;
 import kontroler.DodajKnjiguKontroler;
-import kontroler.DodajPozajmicuKontroler;
+import kontroler.DodajZaduzenjeKontroler;
 import kontroler.GlavnaFormaKontroler;
 import kontroler.IzmeniClanaKontroler;
 import kontroler.IzmeniKnjiguKontroler;
 import kontroler.LoginKontroler;
 import kontroler.PregledClanovaKontroler;
 import kontroler.PregledKnjigaKontroler;
-import kontroler.PregledPozajmicaKontroler;
+import kontroler.PregledZaduzenjaKontroler;
 
 /**
  *
@@ -47,8 +47,8 @@ public class Koordinator {
     private DodajKnjiguKontroler dodajKnjiguKontroler;
     private IzmeniKnjiguKontroler izmeniKnjiguKontroler;
     
-    private PregledPozajmicaKontroler pregledPozajmicaKontroler;
-    private DodajPozajmicuKontroler dodajPozajmicuKontroler;
+    private PregledZaduzenjaKontroler pregledPozajmicaKontroler;
+    private DodajZaduzenjeKontroler dodajPozajmicuKontroler;
     
     private Koordinator() {
         
@@ -118,12 +118,12 @@ public class Koordinator {
     }
 
     public void otvoriPregledPozajmicaFormu() {
-        pregledPozajmicaKontroler = new PregledPozajmicaKontroler(new PregledPozajmicaForma());
+        pregledPozajmicaKontroler = new PregledZaduzenjaKontroler(new PregledZaduzenjaForma());
         pregledPozajmicaKontroler.otvoriFormu();
     }
 
     public void otvoriDodajPozajmicuFormu() {
-        dodajPozajmicuKontroler = new DodajPozajmicuKontroler(new DodajPozajmicuForma());
+        dodajPozajmicuKontroler = new DodajZaduzenjeKontroler(new DodajZaduzenjeForma());
         dodajPozajmicuKontroler.otvoriFormu();
     }
     

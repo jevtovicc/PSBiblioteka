@@ -103,7 +103,7 @@ public class Zaposleni implements ApstraktniDomenskiObjekat {
 
     @Override
     public String vratiNazivTabele() {
-        return "Zaposleni";
+        return "zaposleni";
     }
 
     @Override
@@ -111,9 +111,9 @@ public class Zaposleni implements ApstraktniDomenskiObjekat {
         List<ApstraktniDomenskiObjekat> lista = new ArrayList<>();
         
         while(rs.next()) {
-            long zaposleniID = rs.getLong("zaposleniID");
-            String imePrezime = rs.getString("imePrezime");
-            String korisnickoIme = rs.getString("korisnickoIme");
+            long zaposleniID = rs.getLong("zaposleni_id");
+            String imePrezime = rs.getString("ime_prezime");
+            String korisnickoIme = rs.getString("korisnicko_ime");
             String lozinka = rs.getString("lozinka");
             
             Zaposleni z = new Zaposleni(zaposleniID, imePrezime, korisnickoIme, lozinka);
@@ -125,7 +125,7 @@ public class Zaposleni implements ApstraktniDomenskiObjekat {
 
     @Override
     public String vratiKoloneZaUbacivanje() {
-        return "imePrezime, korisnickoIme, lozinka";
+        return "ime_prezime, korisnicko_ime, lozinka";
     }
 
     @Override
@@ -135,7 +135,7 @@ public class Zaposleni implements ApstraktniDomenskiObjekat {
 
     @Override
     public String vratiPrimarniKljuc() {
-        return "zaposleniID=" + zaposleniID;
+        return "zaposleni_id=" + zaposleniID;
     }
 
     @Override
@@ -145,7 +145,7 @@ public class Zaposleni implements ApstraktniDomenskiObjekat {
 
     @Override
     public String vratiVrednostZaIzmenu() {
-        return "imePrezime='" + this.imePrezime + "', korisnickoIme='" + this.korisnickoIme + "', lozinka='" + this.lozinka + "'";
+        return "ime_prezime='" + this.imePrezime + "', korisnicko_ime='" + this.korisnickoIme + "', lozinka='" + this.lozinka + "'";
     }
 
     @Override

@@ -7,7 +7,7 @@ package niti;
 import domen.Autor;
 import domen.Clan;
 import domen.Knjiga;
-import domen.Pozajmica;
+import domen.Zaduzenje;
 import domen.Zaposleni;
 import java.io.IOException;
 import java.net.Socket;
@@ -114,12 +114,12 @@ public class ObradaKlijentskihZahteva extends Thread {
                         odgovor.setOdgovor(autori);
                         break;
                     case UCITAJ_POZAJMICE:
-                        List<Pozajmica> pozajmice = Kontroler.getInstanca().ucitajPozajmice();
+                        List<Zaduzenje> pozajmice = Kontroler.getInstanca().ucitajPozajmice();
                         odgovor.setOdgovor(pozajmice);
                         break;
                     case DODAJ_POZAJMICU:
                         try {
-                            Pozajmica p = (Pozajmica) zahtev.getParametar();
+                            Zaduzenje p = (Zaduzenje) zahtev.getParametar();
                             Kontroler.getInstanca().dodajPozajmicu(p);                            
                             odgovor.setOdgovor(null);
                         } catch(Exception e) {

@@ -15,30 +15,30 @@ import java.util.ArrayList;
  *
  * @author filipjevtovic
  */
-public class Pozajmica implements ApstraktniDomenskiObjekat {
-    private long pozajmicaID;
+public class Zaduzenje implements ApstraktniDomenskiObjekat {
+    private long zaduzenjeID;
     private Clan clan;
     private Knjiga knjiga;
-    private Date datumPozajmice;
-    private Date datumVracanja;
+    private Date datumZaduzenja;
+    private Date datumRazduzenja;
 
-    public Pozajmica() {
+    public Zaduzenje() {
     }
 
-    public Pozajmica(long pozajmicaID, Clan clan, Knjiga knjiga, Date datumPozajmice, Date datumVracanja) {
-        this.pozajmicaID = pozajmicaID;
+    public Zaduzenje(long pozajmicaID, Clan clan, Knjiga knjiga, Date datumZaduzenja, Date datumRazduzenja) {
+        this.zaduzenjeID = pozajmicaID;
         this.clan = clan;
         this.knjiga = knjiga;
-        this.datumPozajmice = datumPozajmice;
-        this.datumVracanja = datumVracanja;
+        this.datumZaduzenja = datumZaduzenja;
+        this.datumRazduzenja = datumRazduzenja;
     }
 
-    public long getPozajmicaID() {
-        return pozajmicaID;
+    public long getZaduzenjeID() {
+        return zaduzenjeID;
     }
 
-    public void setPozajmicaID(long pozajmicaID) {
-        this.pozajmicaID = pozajmicaID;
+    public void setZaduzenjeID(long zaduzenjeID) {
+        this.zaduzenjeID = zaduzenjeID;
     }
 
     public Clan getClan() {
@@ -57,20 +57,20 @@ public class Pozajmica implements ApstraktniDomenskiObjekat {
         this.knjiga = knjiga;
     }
 
-    public Date getDatumPozajmice() {
-        return datumPozajmice;
+    public Date getDatumZaduzenja() {
+        return datumZaduzenja;
     }
 
-    public void setDatumPozajmice(Date datumPozajmice) {
-        this.datumPozajmice = datumPozajmice;
+    public void setDatumZaduzenja(Date datumZaduzenja) {
+        this.datumZaduzenja = datumZaduzenja;
     }
 
-    public Date getDatumVracanja() {
-        return datumVracanja;
+    public Date getDatumRazduzenja() {
+        return datumRazduzenja;
     }
 
-    public void setDatumVracanja(Date datumVracanja) {
-        this.datumVracanja = datumVracanja;
+    public void setDatumRazduzenja(Date datumRazduzenja) {
+        this.datumRazduzenja = datumRazduzenja;
     }
 
     @Override
@@ -81,11 +81,11 @@ public class Pozajmica implements ApstraktniDomenskiObjekat {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 47 * hash + (int) (this.pozajmicaID ^ (this.pozajmicaID >>> 32));
+        hash = 47 * hash + (int) (this.zaduzenjeID ^ (this.zaduzenjeID >>> 32));
         hash = 47 * hash + Objects.hashCode(this.clan);
         hash = 47 * hash + Objects.hashCode(this.knjiga);
-        hash = 47 * hash + Objects.hashCode(this.datumPozajmice);
-        hash = 47 * hash + Objects.hashCode(this.datumVracanja);
+        hash = 47 * hash + Objects.hashCode(this.datumZaduzenja);
+        hash = 47 * hash + Objects.hashCode(this.datumRazduzenja);
         return hash;
     }
 
@@ -100,8 +100,8 @@ public class Pozajmica implements ApstraktniDomenskiObjekat {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Pozajmica other = (Pozajmica) obj;
-        if (this.pozajmicaID != other.pozajmicaID) {
+        final Zaduzenje other = (Zaduzenje) obj;
+        if (this.zaduzenjeID != other.zaduzenjeID) {
             return false;
         }
         if (!Objects.equals(this.clan, other.clan)) {
@@ -110,15 +110,15 @@ public class Pozajmica implements ApstraktniDomenskiObjekat {
         if (!Objects.equals(this.knjiga, other.knjiga)) {
             return false;
         }
-        if (!Objects.equals(this.datumPozajmice, other.datumPozajmice)) {
+        if (!Objects.equals(this.datumZaduzenja, other.datumZaduzenja)) {
             return false;
         }
-        return Objects.equals(this.datumVracanja, other.datumVracanja);
+        return Objects.equals(this.datumRazduzenja, other.datumRazduzenja);
     }
 
     @Override
     public String vratiNazivTabele() {
-        return "Pozajmica";
+        return "zaduzenje";
     }
 
     @Override
@@ -126,28 +126,29 @@ public class Pozajmica implements ApstraktniDomenskiObjekat {
         List<ApstraktniDomenskiObjekat> lista = new ArrayList<>();
         
         while(rs.next()) {
-            long pozajmicaID = rs.getLong("pozajmicaID");
-            Date datumPozajmice = rs.getDate("datumPozajmice");
-            Date datumVracanja = rs.getDate("datumVracanja");
+            long pozajmicaID = rs.getLong("zaduzenje_id");
             
-            long autorID = rs.getLong("autorID");
+            Date datumZaduzenja = rs.getDate("datum_zaduzenja");
+            Date datumRazduzenja = rs.getDate("datum_razduzenja");
+            
+            long autorID = rs.getLong("autor_id");
             String autorImePrezime = rs.getString(17);
             Autor a = new Autor(autorID, autorImePrezime);
             
-            long knjigaID = rs.getLong("knjigaID");
-            String nazivKnjige = rs.getString("nazivKnjige");
-            String ISBN = rs.getString("ISBN");
+            long knjigaID = rs.getLong("knjiga_id");
+            String nazivKnjige = rs.getString("naziv_knjige");
+            String ISBN = rs.getString("isbn");
             int kolicina = rs.getInt("kolicina");
             Knjiga k = new Knjiga(knjigaID, nazivKnjige, ISBN, kolicina, a);           
             
-            long clanID = rs.getLong("clanID");
+            long clanID = rs.getLong("clan_id");
             String clanImePrezime = rs.getString(7);
-            String adresaStanovanja = rs.getString("adresaStanovanja");
-            Date datumUclanjenja = rs.getDate("datumUclanjenja");
-            Date datumIsteka = rs.getDate("datumIsteka");
+            String adresaStanovanja = rs.getString("adresa_stanovanja");
+            Date datumUclanjenja = rs.getDate("datum_uclanjenja");
+            Date datumIsteka = rs.getDate("datum_isteka");
             Clan c = new Clan(clanID, clanImePrezime, adresaStanovanja, datumUclanjenja, datumIsteka);
             
-            Pozajmica p = new Pozajmica(pozajmicaID, c, k, datumPozajmice, datumVracanja);
+            Zaduzenje p = new Zaduzenje(pozajmicaID, c, k, datumZaduzenja, datumRazduzenja);
             lista.add(p);
         }
         
@@ -156,26 +157,27 @@ public class Pozajmica implements ApstraktniDomenskiObjekat {
 
     @Override
     public String vratiKoloneZaUbacivanje() {
-        return "clanID, knjigaID, datumPozajmice, datumVracanja";
+        return "clan_id, knjiga_id, datum_zaduzenja, datum_razduzenja";
     }
 
     @Override
     public String vratiVrednostiZaUbacivanje() {
         String outputPattern = "yyyy-MM-dd";
         SimpleDateFormat sdf = new SimpleDateFormat(outputPattern);
-        String datumPozajmiceString = sdf.format(datumPozajmice);
-        String datumVracanjaString = datumVracanja == null ? null : sdf.format(datumVracanja);        
         
-        if(datumVracanjaString != null) {
-            return clan.getClanID() + "," + knjiga.getKnjigaID() + ",'" + datumPozajmiceString + "','" + datumVracanjaString + "'";
+        String datumZaduzenjaString = sdf.format(datumZaduzenja);
+        String datumRazduzenjaString = datumRazduzenja == null ? null : sdf.format(datumRazduzenja);        
+        
+        if(datumRazduzenjaString != null) {
+            return clan.getClanID() + "," + knjiga.getKnjigaID() + ",'" + datumZaduzenjaString + "','" + datumRazduzenjaString + "'";
         } else {
-            return clan.getClanID() + "," + knjiga.getKnjigaID() + ",'" + datumPozajmiceString + "', NULL";
+            return clan.getClanID() + "," + knjiga.getKnjigaID() + ",'" + datumZaduzenjaString + "', NULL";
         }
     }
 
     @Override
     public String vratiPrimarniKljuc() {
-        return "pozajmicaID=" + pozajmicaID;
+        return "zaduzenje_id=" + zaduzenjeID;
     }
 
     @Override
@@ -187,14 +189,14 @@ public class Pozajmica implements ApstraktniDomenskiObjekat {
     public String vratiVrednostZaIzmenu() {
         String outputPattern = "yyyy-MM-dd";
         SimpleDateFormat sdf = new SimpleDateFormat(outputPattern);
-        String datumPozajmiceString = sdf.format(datumPozajmice);
-        String datumVracanjaString = datumVracanja == null ? null : sdf.format(datumVracanja);  
-        return "clanID=" + clan.getClanID() + ", knjigaID=" + knjiga.getKnjigaID() + ", datumPozajmice='" + datumPozajmiceString + "', datumVracanja=" + datumVracanjaString == null ? "NULL" : datumVracanjaString;
+        String datumZaduzenjaString = sdf.format(datumZaduzenja);
+        String datumRazduzenjaString = datumRazduzenja == null ? null : sdf.format(datumRazduzenja);  
+        return "clan_id=" + clan.getClanID() + ", knjiga_id=" + knjiga.getKnjigaID() + ", datum_zaduzenja='" + datumZaduzenjaString + "', datum_razduzenja=" + datumRazduzenjaString == null ? "NULL" : datumRazduzenjaString;
     }
 
     @Override
     public void postaviGenerisaniID(long generisaniID) {
-        this.pozajmicaID = generisaniID;
+        this.zaduzenjeID = generisaniID;
     }
     
     

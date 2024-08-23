@@ -4,7 +4,7 @@
  */
 package forme.model;
 
-import domen.Pozajmica;
+import domen.Zaduzenje;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,11 +14,11 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author filipjevtovic
  */
-public class ModelTabelePozajmica extends AbstractTableModel {
-    List<Pozajmica> lista;
-    String[] kolone = {"ID", "Ime i Prezime", "Knjiga", "Datum izajmljivanja", "Datum vracanja"};
+public class ModelTabeleZaduzenje extends AbstractTableModel {
+    List<Zaduzenje> lista;
+    String[] kolone = {"ID", "Ime i Prezime", "Knjiga", "Datum zaduzenja", "Datum razduzenja"};
     
-    public ModelTabelePozajmica(List<Pozajmica> lista) {
+    public ModelTabeleZaduzenje(List<Zaduzenje> lista) {
         this.lista = lista;
     }
     
@@ -39,23 +39,23 @@ public class ModelTabelePozajmica extends AbstractTableModel {
     
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Pozajmica p = lista.get(rowIndex);
+        Zaduzenje p = lista.get(rowIndex);
         String outputPattern = "dd/MM/yyyy";
         SimpleDateFormat sdf = new SimpleDateFormat(outputPattern);
-        String datumPozajmiceString = sdf.format(p.getDatumPozajmice());
-        String datumVracanjaString = p.getDatumVracanja() == null ? null : sdf.format(p.getDatumVracanja());
+        String datumZaduzenjaString = sdf.format(p.getDatumZaduzenja());
+        String datumRazduzenjaString = p.getDatumRazduzenja() == null ? null : sdf.format(p.getDatumRazduzenja());
         
         switch (columnIndex) {
-            case 0: return p.getPozajmicaID();
+            case 0: return p.getZaduzenjeID();
             case 1: return p.getClan().getImePrezime();
             case 2: return p.getKnjiga().getNazivKnjige();
-            case 3: return datumPozajmiceString;
-            case 4: return datumVracanjaString;
+            case 3: return datumZaduzenjaString;
+            case 4: return datumRazduzenjaString;
             default: return "NA";
         }   
     }
 
-    public List<Pozajmica> getLista() {
+    public List<Zaduzenje> getLista() {
         return lista;
     }
 

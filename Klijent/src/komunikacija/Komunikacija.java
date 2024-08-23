@@ -7,7 +7,7 @@ package komunikacija;
 import domen.Autor;
 import domen.Clan;
 import domen.Knjiga;
-import domen.Pozajmica;
+import domen.Zaduzenje;
 import domen.Zaposleni;
 import java.io.IOException;
 import java.net.Socket;
@@ -156,17 +156,17 @@ public class Komunikacija {
         }
     }
 
-    public List<Pozajmica> ucitajPozajmice() {
+    public List<Zaduzenje> ucitajPozajmice() {
         Zahtev zahtev = new Zahtev(Operacija.UCITAJ_POZAJMICE, null);
         posiljalac.posalji(zahtev);
         
         Odgovor odgovor = (Odgovor) primalac.primi();
-        List<Pozajmica> pozajmice = (List<Pozajmica>) odgovor.getOdgovor();
+        List<Zaduzenje> pozajmice = (List<Zaduzenje>) odgovor.getOdgovor();
         
         return pozajmice;
     }
 
-    public void dodajPozajmicu(Pozajmica p) throws Exception {
+    public void dodajPozajmicu(Zaduzenje p) throws Exception {
         Zahtev zahtev = new Zahtev(Operacija.DODAJ_POZAJMICU, p);
         posiljalac.posalji(zahtev);
         

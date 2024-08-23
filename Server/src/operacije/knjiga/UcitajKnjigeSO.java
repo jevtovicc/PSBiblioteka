@@ -22,7 +22,7 @@ public class UcitajKnjigeSO extends ApstraktnaGenerickaOperacija {
 
     @Override
     protected void izvrsiOperaciju(Object param, String kljuc) throws Exception {
-        String uslov = " JOIN Autor A on Knjiga.autorID = A.autorID";
+        String uslov = " JOIN Autor a on knjiga.autor_id = a.autor_id";
         knjige = broker.vratiSve(new Knjiga(), uslov);
     }
 

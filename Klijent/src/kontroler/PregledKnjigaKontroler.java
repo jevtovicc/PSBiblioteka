@@ -35,7 +35,7 @@ public class PregledKnjigaKontroler {
             public void actionPerformed(ActionEvent e) {
                 int red = pkf.getjTableKnjige().getSelectedRow();
                 if(red == -1) {
-                    JOptionPane.showMessageDialog(pkf, "Sistem ne moze da obrise knjigu", "Greska", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(pkf, "Morate izabrati knjigu za brisanje", "Greska", JOptionPane.ERROR_MESSAGE);
                 } else {
                     ModelTabeleKnjiga mtk = (ModelTabeleKnjiga) pkf.getjTableKnjige().getModel();
                     Knjiga k = mtk.getLista().get(red);

@@ -74,7 +74,7 @@ public class Autor implements ApstraktniDomenskiObjekat {
 
     @Override
     public String vratiNazivTabele() {
-        return "Autor";
+        return "autor";
     }
 
     @Override
@@ -82,8 +82,8 @@ public class Autor implements ApstraktniDomenskiObjekat {
         List<ApstraktniDomenskiObjekat> lista = new ArrayList<>();
         
         while(rs.next()) {
-            long autorID = rs.getLong("autorID");
-            String imePrezime = rs.getString("imePrezime");
+            long autorID = rs.getLong("autor_id");
+            String imePrezime = rs.getString("ime_prezime");
             
             Autor a = new Autor(autorID, imePrezime);
             lista.add(a);
@@ -94,7 +94,7 @@ public class Autor implements ApstraktniDomenskiObjekat {
 
     @Override
     public String vratiKoloneZaUbacivanje() {
-        return "imePrezime";
+        return "ime_prezime";
     }
 
     @Override
@@ -104,7 +104,7 @@ public class Autor implements ApstraktniDomenskiObjekat {
 
     @Override
     public String vratiPrimarniKljuc() {
-        return "autorID=" + autorID;
+        return "autor_id=" + autorID;
     }
 
     @Override
@@ -114,7 +114,7 @@ public class Autor implements ApstraktniDomenskiObjekat {
 
     @Override
     public String vratiVrednostZaIzmenu() {
-        return "imePrezime='" + imePrezime + "'";
+        return "ime_prezime='" + imePrezime + "'";
     }
 
     @Override

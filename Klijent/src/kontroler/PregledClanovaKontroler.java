@@ -33,7 +33,7 @@ public class PregledClanovaKontroler {
             public void actionPerformed(ActionEvent e) {
                 int red = pcforma.getjTableClanovi().getSelectedRow();
                 if(red == -1) {
-                    JOptionPane.showMessageDialog(pcforma, "Sistem ne moze da obrise clana", "Greska", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(pcforma, "Morate izabrati clana za brisanje", "Greska", JOptionPane.ERROR_MESSAGE);
                 } else {
                     ModelTabeleClan mtc = (ModelTabeleClan) pcforma.getjTableClanovi().getModel();
                     Clan c = mtc.getLista().get(red);
