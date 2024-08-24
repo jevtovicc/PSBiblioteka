@@ -4,7 +4,11 @@
  */
 package forme;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.IOException;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import koordinator.Koordinator;
 
 /**
@@ -18,8 +22,26 @@ public class GlavnaForma extends javax.swing.JFrame {
      */
     public GlavnaForma() {
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                onExit();
+            }
+        });
     }
-
+    
+    private void onExit() {
+        try {
+            Koordinator.getInstanca().zatvoriAplikaciju();
+            JOptionPane.showMessageDialog(this, "Odjavljeni ste sa sistema.", "Odjava", JOptionPane.INFORMATION_MESSAGE);
+            System.exit(0);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Greska prilikom slanja zahteva za kraj rada. Bicete nasilno diskonektovani", "Greska", JOptionPane.ERROR_MESSAGE);
+            System.exit(1);
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

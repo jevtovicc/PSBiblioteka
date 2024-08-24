@@ -13,6 +13,9 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import koordinator.Koordinator;
 
 /**
@@ -25,27 +28,34 @@ public class Komunikacija {
     private Primalac primalac;
     private static Komunikacija instanca;
     
-    private Komunikacija() throws IOException {
+    private Komunikacija() {
         konekcija();
     }
     
-    public static Komunikacija getInstanca() throws IOException {
+    public static Komunikacija getInstanca() {
         if(instanca == null) {
             instanca = new Komunikacija();
         }
         return instanca;
     }
     
-    private void konekcija() throws IOException {
-        try {
+    private void konekcija() {
+        try {    
             soket = new Socket("localhost", 9000);
             posiljalac = new Posiljalac(soket);
             primalac = new Primalac(soket);
         } catch (IOException ex) {
-            System.out.println("NEUSPESNO POVEZIVANJE SA SERVEROM");            
-            throw ex;
+            JOptionPane.showMessageDialog(null, "Neuspesno povezivanje sa serverom. Proverite da li je server pokrenut.", "Greska", JOptionPane.ERROR_MESSAGE);
+            System.exit(1);
         }
-        
+    }
+    
+    private void zatvoriResurse() {
+        try {
+            soket.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Komunikacija.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public Zaposleni login(String korIme, String lozinka) {
@@ -174,5 +184,11 @@ public class Komunikacija {
         if (odgovor.getOdgovor() instanceof Exception e) {
             throw new Exception(e);
         }
+    }
+
+    public void posaljiKrajRada() {
+        Zahtev zahtev = new Zahtev(Operacija.KRAJ_RADA, null);
+        posiljalac.posalji(zahtev);
+        zatvoriResurse();
     }
 }

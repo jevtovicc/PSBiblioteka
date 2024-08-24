@@ -41,8 +41,8 @@ public class DodajZaduzenjeKontroler {
            private void dodaj(ActionEvent e) {   
                Zaduzenje p = new Zaduzenje();
                
-               String datumIznajmljivanjaString = dpf.getjTextFieldDatumPozajmice().getText().trim();
-               String datumVracanjaString = dpf.getjTextFieldDatumVracanja().getText().trim();
+               String datumIznajmljivanjaString = dpf.getjTextFieldDatumZaduzenja().getText().trim();
+               String datumVracanjaString = dpf.getjTextFieldDatumRazduzenja().getText().trim();
                
                if (datumIznajmljivanjaString.isEmpty()) {
                    JOptionPane.showMessageDialog(dpf, "Polje za datum zaduzenja ne sme biti prazno", "Greska", JOptionPane.ERROR_MESSAGE);

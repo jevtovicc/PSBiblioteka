@@ -42,6 +42,9 @@ public class ObradaKlijentskihZahteva extends Thread {
                 Odgovor odgovor = new Odgovor();
 
                 switch (zahtev.getOperacija()) {
+                    case KRAJ_RADA:
+                        prekiniNit();
+                        return;
                     case LOGIN:
                         Zaposleni z = (Zaposleni) zahtev.getParametar();
                         z = Kontroler.getInstanca().login(z);
@@ -139,8 +142,9 @@ public class ObradaKlijentskihZahteva extends Thread {
     
     public void prekiniNit() {
         kraj = true;
-        try {
-            soket.close();
+        try { 
+            soket.close(); 
+            System.out.println("Klijent diskonektovan");
         } catch (IOException ex) {
             ex.printStackTrace();
         }

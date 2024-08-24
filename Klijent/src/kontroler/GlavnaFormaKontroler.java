@@ -30,4 +30,8 @@ public class GlavnaFormaKontroler {
         gf.setVisible(true);
         gf.getjLabelUlogovani().setText(imePrezime);
     }
+
+    public void zatvoriFormu() {
+        gf.dispose();
+    }
 }

@@ -5,9 +5,14 @@
 package forme.prijava;
 
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.IOException;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import koordinator.Koordinator;
 
 /**
  *
@@ -20,6 +25,24 @@ public class LoginForma extends javax.swing.JFrame {
      */
     public LoginForma() {
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                onExit();
+            }
+        });
+    }
+    
+    private void onExit() {
+        try {
+            Koordinator.getInstanca().zatvoriAplikaciju();
+            JOptionPane.showMessageDialog(this, "Odjavljeni ste sa sistema.", "Odjava", JOptionPane.INFORMATION_MESSAGE);
+            System.exit(0);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Greska prilikom slanja zahteva za kraj rada. Bicete nasilno diskonektovani", "Greska", JOptionPane.ERROR_MESSAGE);
+            System.exit(1);
+        }
     }
 
     /**

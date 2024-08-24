@@ -34,8 +34,8 @@ public class DodajZaduzenjeForma extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextFieldDatumPozajmice = new javax.swing.JTextField();
-        jTextFieldDatumVracanja = new javax.swing.JTextField();
+        jTextFieldDatumZaduzenja = new javax.swing.JTextField();
+        jTextFieldDatumRazduzenja = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jTextFieldImePrezime = new javax.swing.JTextField();
         jButtonPretraziClana = new javax.swing.JButton();
@@ -52,9 +52,9 @@ public class DodajZaduzenjeForma extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Datum pozajmice (dd/MM/yyyy):");
+        jLabel1.setText("Datum zaduzenja (dd/MM/yyyy):");
 
-        jLabel2.setText("Datum vracanja (dd/MM/yyyy):");
+        jLabel2.setText("Datum razduzenja (dd/MM/yyyy):");
 
         jLabel3.setText("Ime i Prezime clana:");
 
@@ -109,8 +109,8 @@ public class DodajZaduzenjeForma extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldDatumPozajmice, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
-                            .addComponent(jTextFieldDatumVracanja)))
+                            .addComponent(jTextFieldDatumZaduzenja, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+                            .addComponent(jTextFieldDatumRazduzenja)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -140,11 +140,11 @@ public class DodajZaduzenjeForma extends javax.swing.JFrame {
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextFieldDatumPozajmice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldDatumZaduzenja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextFieldDatumVracanja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldDatumRazduzenja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -183,8 +183,8 @@ public class DodajZaduzenjeForma extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableClanovi;
     private javax.swing.JTable jTableKnjige;
-    private javax.swing.JTextField jTextFieldDatumPozajmice;
-    private javax.swing.JTextField jTextFieldDatumVracanja;
+    private javax.swing.JTextField jTextFieldDatumRazduzenja;
+    private javax.swing.JTextField jTextFieldDatumZaduzenja;
     private javax.swing.JTextField jTextFieldImePrezime;
     private javax.swing.JTextField jTextFieldNazivKnjige;
     // End of variables declaration//GEN-END:variables
@@ -219,12 +219,12 @@ public class DodajZaduzenjeForma extends javax.swing.JFrame {
         return jTableKnjige;
     }
 
-    public JTextField getjTextFieldDatumPozajmice() {
-        return jTextFieldDatumPozajmice;
+    public JTextField getjTextFieldDatumZaduzenja() {
+        return jTextFieldDatumZaduzenja;
     }
 
-    public JTextField getjTextFieldDatumVracanja() {
-        return jTextFieldDatumVracanja;
+    public JTextField getjTextFieldDatumRazduzenja() {
+        return jTextFieldDatumRazduzenja;
     }
 
     public JTextField getjTextFieldNazivKnjige() {

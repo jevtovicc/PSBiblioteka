@@ -4,6 +4,7 @@
  */
 package main;
 
+import komunikacija.Komunikacija;
 import koordinator.Koordinator;
 
 /**
@@ -12,6 +13,8 @@ import koordinator.Koordinator;
  */
 public class Main {
     public static void main(String[] args) {
+        // konekcija sa serverom
+        Komunikacija.getInstanca();
         Koordinator.getInstanca().otvoriLoginFormu();
     }
 }
