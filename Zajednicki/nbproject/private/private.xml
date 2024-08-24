@@ -2,6 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Zajednicki/src/komunikacija/Zahtev.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Zajednicki/src/domen/Clan.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Zajednicki/src/domen/Knjiga.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Zajednicki/src/komunikacija/Operacija.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Zajednicki/src/domen/Autor.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Zajednicki/src/domen/Zaduzenje.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Zajednicki/src/domen/Zaposleni.java</file>
+        </group>
     </open-files>
 </project-private>

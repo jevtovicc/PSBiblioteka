@@ -2,6 +2,21 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Server/src/operacije/knjiga/KreirajKnjiguSO.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Server/src/konfiguracija/Konfiguracija.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Server/src/forme/ServerskaForma.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Server/src/operacije/clan/IzmeniClanaSO.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Server/src/kontroler/Kontroler.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Server/src/operacije/clan/KreirajClanaSO.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Server/src/repozitorijum/Repozitorijum.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Server/src/operacije/zaduzenje/UcitajZaduzenjeSO.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Server/src/operacije/knjiga/UcitajKnjigeSO.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Server/src/server/Server.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Server/src/operacije/clan/UcitajClanoveSO.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Server/src/repozitorijum/db/impl/DBRepozitorijumGenericki.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Server/src/niti/ObradaKlijentskihZahteva.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Server/src/operacije/ApstraktnaGenerickaOperacija.java</file>
+        </group>
     </open-files>
 </project-private>

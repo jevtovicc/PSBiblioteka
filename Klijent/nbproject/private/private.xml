@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Klijent/src/forme/model/ModelTabeleClan.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Klijent/src/forme/zaduzenje/DodajZaduzenjeForma.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Klijent/src/main/Main.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Klijent/src/kontroler/IzmeniKnjiguKontroler.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Klijent/src/koordinator/Koordinator.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Klijent/src/komunikacija/Komunikacija.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Klijent/src/forme/knjiga/PregledKnjigaForma.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Klijent/src/forme/knjiga/DodajKnjiguForma.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Klijent/src/kontroler/DodajZaduzenjeKontroler.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Klijent/src/kontroler/DodajKnjiguKontroler.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Klijent/src/kontroler/IzmeniClanaKontroler.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Klijent/src/kontroler/DodajClanaKontroler.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Klijent/src/kontroler/PregledKnjigaKontroler.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Klijent/src/forme/model/ModelTabeleZaduzenje.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Klijent/src/forme/model/ModelTabeleKnjiga.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Klijent/src/forme/GlavnaForma.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Klijent/src/kontroler/GlavnaFormaKontroler.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Klijent/src/kontroler/PregledClanovaKontroler.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Klijent/src/kontroler/LoginKontroler.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Klijent/src/forme/clan/DodajClanaForma.java</file>
+        </group>
     </open-files>
 </project-private>

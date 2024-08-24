@@ -33,8 +33,8 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jTextFieldDatumPozajmice" pref="239" max="32767" attributes="0"/>
-                          <Component id="jTextFieldDatumVracanja" max="32767" attributes="0"/>
+                          <Component id="jTextFieldDatumZaduzenja" pref="239" max="32767" attributes="0"/>
+                          <Component id="jTextFieldDatumRazduzenja" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -74,12 +74,12 @@
               <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldDatumPozajmice" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldDatumZaduzenja" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldDatumVracanja" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldDatumRazduzenja" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -109,17 +109,17 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Datum pozajmice (dd/MM/yyyy):"/>
+        <Property name="text" type="java.lang.String" value="Datum zaduzenja (dd/MM/yyyy):"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Datum vracanja (dd/MM/yyyy):"/>
+        <Property name="text" type="java.lang.String" value="Datum razduzenja (dd/MM/yyyy):"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldDatumPozajmice">
+    <Component class="javax.swing.JTextField" name="jTextFieldDatumZaduzenja">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldDatumVracanja">
+    <Component class="javax.swing.JTextField" name="jTextFieldDatumRazduzenja">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
