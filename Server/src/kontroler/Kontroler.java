@@ -10,6 +10,7 @@ import domen.Knjiga;
 import domen.Zaduzenje;
 import domen.Zaposleni;
 import java.util.List;
+import operacije.autor.KreirajAutoraSO;
 import operacije.autor.UcitajAutoreSO;
 import operacije.prijava.PrijavaSO;
 import operacije.clan.IzmeniClanaSO;
@@ -109,5 +110,10 @@ public class Kontroler {
     public void dodajPozajmicu(Zaduzenje p) throws Exception {
         KreirajZaduzenjeSO operacija = new KreirajZaduzenjeSO();
         operacija.izvrsi(p, null);
+    }
+
+    public void dodajAutora(Autor a) throws Exception {
+        KreirajAutoraSO operacija = new KreirajAutoraSO();
+        operacija.izvrsi(a, null);
     }
 }

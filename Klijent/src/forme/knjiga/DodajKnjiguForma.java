@@ -46,6 +46,7 @@ public class DodajKnjiguForma extends javax.swing.JFrame {
         jButtonResetuj = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jSpinnerKolicina = new javax.swing.JSpinner();
+        jButtonDodajAutora = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Dodaj Knjigu");
@@ -79,6 +80,8 @@ public class DodajKnjiguForma extends javax.swing.JFrame {
 
         jSpinnerKolicina.setModel(new javax.swing.SpinnerNumberModel(1, 0, 10, 1));
 
+        jButtonDodajAutora.setText("Dodaj novog autora");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -93,6 +96,10 @@ public class DodajKnjiguForma extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jSpinnerKolicina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel2)
@@ -103,13 +110,12 @@ public class DodajKnjiguForma extends javax.swing.JFrame {
                                     .addComponent(jTextFieldISBN)
                                     .addComponent(jTextFieldNazivAutora, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
-                                .addComponent(jButtonPronadjiAutora, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButtonResetuj, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jSpinnerKolicina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButtonDodajAutora, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jButtonPronadjiAutora, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jButtonResetuj, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -134,8 +140,10 @@ public class DodajKnjiguForma extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jButtonPronadjiAutora)
                     .addComponent(jButtonResetuj))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addComponent(jButtonDodajAutora)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(jButtonDodajKnjigu)
                 .addContainerGap())
@@ -145,6 +153,7 @@ public class DodajKnjiguForma extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonDodajAutora;
     private javax.swing.JButton jButtonDodajKnjigu;
     private javax.swing.JButton jButtonPronadjiAutora;
     private javax.swing.JButton jButtonResetuj;
@@ -204,6 +213,10 @@ public class DodajKnjiguForma extends javax.swing.JFrame {
 
     public void dodajAddActionListener(ActionListener actionListener) {
         jButtonDodajKnjigu.addActionListener(actionListener);
+    }
+
+    public void addBtnDodajAutoraActionListener(ActionListener actionListener) {
+        jButtonDodajAutora.addActionListener(actionListener);
     }
 
     

@@ -20,6 +20,7 @@ public enum Operacija implements Serializable {
     UCITAJ_AUTORE, 
     DODAJ_KNJIGU, 
     IZMENI_KNJIGU, 
+    DODAJ_AUTORA,
     UCITAJ_POZAJMICE, 
     DODAJ_POZAJMICU,
     KRAJ_RADA,

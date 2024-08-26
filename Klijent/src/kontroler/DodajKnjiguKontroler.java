@@ -98,6 +98,27 @@ public class DodajKnjiguKontroler {
                 pripremiFormu();
             }
         });
+        
+        dkforma.addBtnDodajAutoraActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nazivAutora = dkforma.getjTextFieldNazivAutora().getText().trim();
+                Autor a = new Autor();
+                a.setImePrezime(nazivAutora);
+                try {
+                    Komunikacija.getInstanca().dodajAutora(a);
+                    JOptionPane.showMessageDialog(dkforma, "Sistem je kreirao autora", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
+                    pripremiFormu();
+                } catch(IOException ioex) {
+                     JOptionPane.showMessageDialog(dkforma, "Server je pao. Nije moguce obaviti operaciju. Bicete izlogovani sa sistema.", "Greska", JOptionPane.ERROR_MESSAGE);
+                     Komunikacija.getInstanca().zatvoriResurse();
+                     System.exit(0);
+                } catch(Exception ex) {
+                     String porukaGreske = ex.getMessage();
+                     JOptionPane.showMessageDialog(dkforma, porukaGreske, "Greska", JOptionPane.ERROR_MESSAGE);
+                } 
+            }
+        });
     }
 
     public void otvoriFormu() {

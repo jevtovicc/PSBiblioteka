@@ -212,4 +212,14 @@ public class Komunikacija {
         posiljalac.posalji(zahtev);
         zatvoriResurse();
     }
+
+    public void dodajAutora(Autor a) throws Exception {
+        Zahtev zahtev = new Zahtev(Operacija.DODAJ_AUTORA, a);
+        posiljalac.posalji(zahtev);
+        
+        Odgovor odgovor = (Odgovor) primalac.primi();
+        if (odgovor.getOdgovor() instanceof Exception e) {
+            throw new Exception(e);
+        }
+    }
 }

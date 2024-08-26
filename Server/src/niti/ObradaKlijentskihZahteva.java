@@ -54,6 +54,7 @@ public class ObradaKlijentskihZahteva extends Thread {
                     case IZMENI_KNJIGU -> obradiIzmeniKnjigu(zahtev);
                     case OBRISI_KNJIGU -> obradiObrisiKnjigu(zahtev);
                     case UCITAJ_AUTORE -> obradiUcitajAutore();
+                    case DODAJ_AUTORA -> obradiDodajAutora(zahtev);
                     case UCITAJ_POZAJMICE -> obradiUcitajPozajmice();
                     case DODAJ_POZAJMICU -> obradiDodajPozajmicu(zahtev);
                     default -> throw new IllegalStateException("Greska. Operacija ne postoji.");
@@ -199,5 +200,17 @@ public class ObradaKlijentskihZahteva extends Thread {
 
     private void obradiHeartbeat() throws IOException {
         posiljalac.posalji(new Odgovor());
+    }
+
+    private void obradiDodajAutora(Zahtev zahtev) throws IOException {
+        Odgovor odgovor = new Odgovor();
+        try {
+            Autor a = (Autor) zahtev.getParametar();
+            Kontroler.getInstanca().dodajAutora(a);                            
+            odgovor.setOdgovor(null);
+        } catch(Exception e) {
+            odgovor.setOdgovor(e);
+        }
+        posiljalac.posalji(odgovor);
     }
 }
