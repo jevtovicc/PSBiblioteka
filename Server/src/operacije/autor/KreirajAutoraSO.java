@@ -5,7 +5,6 @@
 package operacije.autor;
 
 import domen.Autor;
-import domen.Clan;
 import operacije.ApstraktnaGenerickaOperacija;
 
 /**
@@ -17,7 +16,13 @@ public class KreirajAutoraSO extends ApstraktnaGenerickaOperacija {
     
     @Override
     protected void preduslovi(Object param) throws Exception {
-        
+        if(param == null || !(param instanceof Autor)) {
+            throw new Exception("Sistem ne moze da kreira autora");
+        }
+        Autor a = (Autor) param;
+        if (a.getImePrezime().isEmpty()) {
+            throw new Exception("Sistem ne moze da kreira autora");
+        }
     }
     
     @Override

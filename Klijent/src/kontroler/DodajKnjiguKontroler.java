@@ -103,8 +103,15 @@ public class DodajKnjiguKontroler {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String nazivAutora = dkforma.getjTextFieldNazivAutora().getText().trim();
+                
+                if (nazivAutora.isEmpty()) {
+                   JOptionPane.showMessageDialog(dkforma, "Polje za naziv autora ne sme biti prazno", "Greska", JOptionPane.ERROR_MESSAGE);
+                   return;
+                }
+                
                 Autor a = new Autor();
                 a.setImePrezime(nazivAutora);
+
                 try {
                     Komunikacija.getInstanca().dodajAutora(a);
                     JOptionPane.showMessageDialog(dkforma, "Sistem je kreirao autora", "Uspeh", JOptionPane.INFORMATION_MESSAGE);

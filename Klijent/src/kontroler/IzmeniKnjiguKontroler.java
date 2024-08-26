@@ -100,6 +100,12 @@ public class IzmeniKnjiguKontroler {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String nazivAutora = ikforma.getjTextFieldNazivAutora().getText().trim();
+                
+                if (nazivAutora.isEmpty()) {
+                   JOptionPane.showMessageDialog(ikforma, "Polje za naziv autora ne sme biti prazno", "Greska", JOptionPane.ERROR_MESSAGE);
+                   return;
+                }
+                
                 Autor a = new Autor();
                 a.setImePrezime(nazivAutora);
                 try {
