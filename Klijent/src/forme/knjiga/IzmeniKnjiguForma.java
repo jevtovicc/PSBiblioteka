@@ -46,6 +46,7 @@ public class IzmeniKnjiguForma extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableAutori = new javax.swing.JTable();
         jButtonIzmeni = new javax.swing.JButton();
+        jButtonDodajAutora = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Izmeni Knjigu");
@@ -79,6 +80,8 @@ public class IzmeniKnjiguForma extends javax.swing.JFrame {
 
         jButtonIzmeni.setText("Izmeni");
 
+        jButtonDodajAutora.setText("Dodaj novog autora");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -101,9 +104,12 @@ public class IzmeniKnjiguForma extends javax.swing.JFrame {
                                 .addComponent(jSpinnerKolicina, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jTextFieldNazivAutora, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jButtonPronadji)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jButtonResetuj)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jButtonPronadji)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jButtonResetuj))
+                                .addComponent(jButtonDodajAutora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addComponent(jButtonIzmeni, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(78, Short.MAX_VALUE))
         );
@@ -129,7 +135,9 @@ public class IzmeniKnjiguForma extends javax.swing.JFrame {
                     .addComponent(jButtonPronadji)
                     .addComponent(jButtonResetuj))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonDodajAutora)
+                .addGap(2, 2, 2)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonIzmeni, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(17, Short.MAX_VALUE))
@@ -168,6 +176,7 @@ public class IzmeniKnjiguForma extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonDodajAutora;
     private javax.swing.JButton jButtonIzmeni;
     private javax.swing.JButton jButtonPronadji;
     private javax.swing.JButton jButtonResetuj;
@@ -185,5 +194,17 @@ public class IzmeniKnjiguForma extends javax.swing.JFrame {
 
     public void izmeniAddActionListener(ActionListener actionListener) {
         jButtonIzmeni.addActionListener(actionListener);
+    }
+
+    public void addBtnPretraziActionListener(ActionListener actionListener) {
+        jButtonPronadji.addActionListener(actionListener);
+    }
+
+    public void addBtnResetujActionListener(ActionListener actionListener) {
+        jButtonResetuj.addActionListener(actionListener);
+    }
+
+    public void addBtnDodajAutoraActionListener(ActionListener actionListener) {
+        jButtonDodajAutora.addActionListener(actionListener);
     }
 }

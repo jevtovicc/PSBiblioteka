@@ -29,7 +29,7 @@
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Component id="jScrollPane1" pref="579" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -44,9 +44,14 @@
                               <Component id="jTextFieldNazivAutora" alignment="0" pref="342" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jButtonPronadji" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jButtonResetuj" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="jButtonPronadji" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jButtonResetuj" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="jButtonDodajAutora" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <Component id="jButtonIzmeni" min="-2" pref="117" max="-2" attributes="0"/>
@@ -81,7 +86,9 @@
                   <Component id="jButtonResetuj" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="372" max="-2" attributes="0"/>
+              <Component id="jButtonDodajAutora" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="347" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jButtonIzmeni" min="-2" pref="34" max="-2" attributes="0"/>
               <EmptySpace pref="17" max="32767" attributes="0"/>
@@ -157,6 +164,11 @@
     <Component class="javax.swing.JButton" name="jButtonIzmeni">
       <Properties>
         <Property name="text" type="java.lang.String" value="Izmeni"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButtonDodajAutora">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Dodaj novog autora"/>
       </Properties>
     </Component>
   </SubComponents>

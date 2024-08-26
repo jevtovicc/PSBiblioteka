@@ -108,7 +108,8 @@ public class DodajKnjiguKontroler {
                 try {
                     Komunikacija.getInstanca().dodajAutora(a);
                     JOptionPane.showMessageDialog(dkforma, "Sistem je kreirao autora", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
-                    pripremiFormu();
+                    osveziFormu();
+                    selektujAutora((ModelTabeleAutor) dkforma.getjTableAutori().getModel(), a);
                 } catch(IOException ioex) {
                      JOptionPane.showMessageDialog(dkforma, "Server je pao. Nije moguce obaviti operaciju. Bicete izlogovani sa sistema.", "Greska", JOptionPane.ERROR_MESSAGE);
                      Komunikacija.getInstanca().zatvoriResurse();
@@ -131,12 +132,32 @@ public class DodajKnjiguKontroler {
         try {
             autori = komunikacija.Komunikacija.getInstanca().ucitajAutore();
             ModelTabeleAutor mta = new ModelTabeleAutor(autori);
-            dkforma.getjTableAutori().setModel(mta);
+            dkforma.getjTableAutori().setModel(mta);            
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(dkforma, "Server je pao. Nije moguce obaviti operaciju. Bicete izlogovani sa sistema.", "Greska", JOptionPane.ERROR_MESSAGE);
             Komunikacija.getInstanca().zatvoriResurse();
             System.exit(0);
         }
         
+    }
+    
+    private void osveziFormu() {
+        List<Autor> autori;
+        try {
+            autori = komunikacija.Komunikacija.getInstanca().ucitajAutore();
+            ModelTabeleAutor mta = new ModelTabeleAutor(autori);
+            dkforma.getjTableAutori().setModel(mta);    
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(dkforma, "Server je pao. Nije moguce obaviti operaciju. Bicete izlogovani sa sistema.", "Greska", JOptionPane.ERROR_MESSAGE);
+            Komunikacija.getInstanca().zatvoriResurse();
+            System.exit(0);
+        }
+    }
+    
+    private void selektujAutora(ModelTabeleAutor mta, Autor autor) {
+        dkforma.getjTextFieldNazivAutora().setText(autor.getImePrezime());
+        mta.pretrazi(autor.getImePrezime());
+        int red = 0;
+        dkforma.getjTableAutori().setRowSelectionInterval(red, red);
     }
 }
