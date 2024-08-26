@@ -56,10 +56,10 @@ public class Komunikacija {
                 try {
                     Zahtev z = new Zahtev(Operacija.HEARTBEAT, null);
                     posiljalac.posalji(z);
-                    Odgovor odgovor = (Odgovor) primalac.primi();
+                    primalac.primi();
                     Thread.sleep(5000); // Sleep for 5 seconds before sending the next heartbeat
                 } catch (IOException ioex) {
-                    JOptionPane.showMessageDialog(null, "Server je pao. Bicete diskonektovani");
+                    JOptionPane.showMessageDialog(null, "Server je pao. Bicete diskonektovani", "Greska", JOptionPane.ERROR_MESSAGE);
                     zatvoriResurse();
                     System.exit(0);
                 } catch (InterruptedException e) {

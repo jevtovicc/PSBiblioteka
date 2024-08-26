@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.List;
 import komunikacija.Odgovor;
+import static komunikacija.Operacija.DODAJ_CLANA;
 import komunikacija.Posiljalac;
 import komunikacija.Primalac;
 import komunikacija.Zahtev;
@@ -38,110 +39,33 @@ public class ObradaKlijentskihZahteva extends Thread {
     public void run() {
         while(!kraj) {
             try {
-                Zahtev zahtev = (Zahtev) primalac.primi();
-                Odgovor odgovor = new Odgovor();
+                Zahtev zahtev = (Zahtev) primalac.primi();                
 
                 switch (zahtev.getOperacija()) {
-                    case HEARTBEAT:
-                        break;
-                    case KRAJ_RADA:
-                        prekiniNit();
-                        return;
-                    case LOGIN:
-                        Zaposleni z = (Zaposleni) zahtev.getParametar();
-                        z = Kontroler.getInstanca().login(z);
-                        odgovor.setOdgovor(z);
-                        break;
-                    case UCITAJ_CLANOVE:
-                        List<Clan> clanovi = Kontroler.getInstanca().ucitajClanove();
-                        odgovor.setOdgovor(clanovi);
-                        break;
-                    case OBRISI_CLANA:
-                        try {
-                            Clan c = (Clan) zahtev.getParametar();
-                            Kontroler.getInstanca().obrisiClana(c);
-                            odgovor.setOdgovor(c);
-                        } catch(Exception e) {
-                            odgovor.setOdgovor(e);
-                        }
-                        break;
-                    case DODAJ_CLANA:
-                        try {
-                            Clan c = (Clan) zahtev.getParametar();
-                            Kontroler.getInstanca().dodajClana(c);                            
-                            odgovor.setOdgovor(null);
-                        } catch(Exception e) {
-                            odgovor.setOdgovor(e);
-                        }
-                        break;
-                    case IZMENI_CLANA:
-                        try {
-                            Clan c = (Clan) zahtev.getParametar();
-                            Kontroler.getInstanca().izmeniClana(c);
-                            odgovor.setOdgovor(c);
-                        } catch(Exception e) {
-                            odgovor.setOdgovor(e);
-                        }
-                        break;
-                    case UCITAJ_KNJIGE:
-                        List<Knjiga> knjige = Kontroler.getInstanca().ucitajKnjige();
-                        odgovor.setOdgovor(knjige);
-                        break;
-                    case DODAJ_KNJIGU:
-                        try {
-                            Knjiga k = (Knjiga) zahtev.getParametar();
-                            Kontroler.getInstanca().dodajKnjigu(k);                            
-                            odgovor.setOdgovor(null);
-                        } catch(Exception e) {
-                            odgovor.setOdgovor(e);
-                        }
-                        break;
-                    case IZMENI_KNJIGU:
-                        try {
-                            Knjiga k = (Knjiga) zahtev.getParametar();
-                            Kontroler.getInstanca().izmeniKnjigu(k);                            
-                            odgovor.setOdgovor(k);
-                        } catch(Exception e) {
-                            odgovor.setOdgovor(e);
-                        }
-                        break;
-                    case OBRISI_KNJIGU:
-                        try {
-                            Knjiga k = (Knjiga) zahtev.getParametar();
-                            Kontroler.getInstanca().obrisiKnjigu(k);
-                            odgovor.setOdgovor(k);
-                        } catch(Exception e) {
-                            odgovor.setOdgovor(e);
-                        }
-                        break;
-                    case UCITAJ_AUTORE:
-                        List<Autor> autori = Kontroler.getInstanca().ucitajAutore();
-                        odgovor.setOdgovor(autori);
-                        break;
-                    case UCITAJ_POZAJMICE:
-                        List<Zaduzenje> pozajmice = Kontroler.getInstanca().ucitajPozajmice();
-                        odgovor.setOdgovor(pozajmice);
-                        break;
-                    case DODAJ_POZAJMICU:
-                        try {
-                            Zaduzenje p = (Zaduzenje) zahtev.getParametar();
-                            Kontroler.getInstanca().dodajPozajmicu(p);                            
-                            odgovor.setOdgovor(null);
-                        } catch(Exception e) {
-                            odgovor.setOdgovor(e);
-                        }
-                        break;
-                    default: System.out.println("Greska. Operacija ne postoji.");
+                    case HEARTBEAT -> obradiHeartbeat();
+                    case KRAJ_RADA -> prekiniNit();
+                    case LOGIN -> obradiLogin(zahtev);
+                    case DODAJ_CLANA -> obradiDodajClana(zahtev);
+                    case UCITAJ_CLANOVE -> obradiUcitajClanove();
+                    case IZMENI_CLANA -> obradiIzmeniClana(zahtev);
+                    case OBRISI_CLANA -> obradiObrisiClana(zahtev);
+                    case DODAJ_KNJIGU -> obradiDodajKnjigu(zahtev);
+                    case UCITAJ_KNJIGE -> obradiUcitajKnjige();
+                    case IZMENI_KNJIGU -> obradiIzmeniKnjigu(zahtev);
+                    case OBRISI_KNJIGU -> obradiObrisiKnjigu(zahtev);
+                    case UCITAJ_AUTORE -> obradiUcitajAutore();
+                    case UCITAJ_POZAJMICE -> obradiUcitajPozajmice();
+                    case DODAJ_POZAJMICU -> obradiDodajPozajmicu(zahtev);
+                    default -> throw new IllegalStateException("Greska. Operacija ne postoji.");
                 }
-
-                posiljalac.posalji(odgovor);
             } catch(Exception e) {
+                System.out.println("Neuspesno slanje odgovora ka klijentu!");
                 e.printStackTrace();
             }
             
         }
     }
-    
+      
     public void prekiniNit() {
         kraj = true;
         try { 
@@ -151,5 +75,129 @@ public class ObradaKlijentskihZahteva extends Thread {
             ex.printStackTrace();
         }
         interrupt();
+    }
+    
+    private void obradiLogin(Zahtev zahtev) throws Exception {
+        Odgovor odgovor = new Odgovor();
+        Zaposleni z = (Zaposleni) zahtev.getParametar();
+        z = Kontroler.getInstanca().login(z);
+        odgovor.setOdgovor(z);
+        posiljalac.posalji(odgovor);
+    }
+    
+    private void obradiDodajClana(Zahtev zahtev) throws IOException {
+        Odgovor odgovor = new Odgovor();
+        try {
+            Clan c = (Clan) zahtev.getParametar();
+            Kontroler.getInstanca().dodajClana(c);                            
+            odgovor.setOdgovor(null);
+        } catch(Exception e) {
+            odgovor.setOdgovor(e);
+        }
+        posiljalac.posalji(odgovor);
+    }
+    
+    private void obradiUcitajClanove() throws Exception {
+        Odgovor odgovor = new Odgovor();
+        List<Clan> clanovi = Kontroler.getInstanca().ucitajClanove();
+        odgovor.setOdgovor(clanovi);
+        posiljalac.posalji(odgovor);
+    }
+    
+    private void obradiIzmeniClana(Zahtev zahtev) throws IOException {
+        Odgovor odgovor = new Odgovor();
+        try {
+            Clan c = (Clan) zahtev.getParametar();
+            Kontroler.getInstanca().izmeniClana(c);
+            odgovor.setOdgovor(c);
+        } catch(Exception e) {
+            odgovor.setOdgovor(e);
+        }
+        posiljalac.posalji(odgovor);
+    }
+    
+    private void obradiObrisiClana(Zahtev zahtev) throws IOException {
+        Odgovor odgovor = new Odgovor();
+        try {
+            Clan c = (Clan) zahtev.getParametar();
+            Kontroler.getInstanca().obrisiClana(c);
+            odgovor.setOdgovor(c);
+        } catch(Exception e) {
+            odgovor.setOdgovor(e);
+        }
+        posiljalac.posalji(odgovor);
+    }
+
+    private void obradiDodajKnjigu(Zahtev zahtev) throws IOException {
+        Odgovor odgovor = new Odgovor();
+        try {
+            Knjiga k = (Knjiga) zahtev.getParametar();
+            Kontroler.getInstanca().dodajKnjigu(k);                            
+            odgovor.setOdgovor(null);
+        } catch(Exception e) {
+            odgovor.setOdgovor(e);
+        }
+        posiljalac.posalji(odgovor);
+    }
+
+    private void obradiUcitajKnjige() throws Exception {
+        Odgovor odgovor = new Odgovor();
+        List<Knjiga> knjige = Kontroler.getInstanca().ucitajKnjige();
+        odgovor.setOdgovor(knjige);
+        posiljalac.posalji(odgovor);
+    }
+
+    private void obradiIzmeniKnjigu(Zahtev zahtev) throws IOException {
+        Odgovor odgovor = new Odgovor();
+        try {
+            Knjiga k = (Knjiga) zahtev.getParametar();
+            Kontroler.getInstanca().izmeniKnjigu(k);                            
+            odgovor.setOdgovor(k);
+        } catch(Exception e) {
+            odgovor.setOdgovor(e);
+        }
+        posiljalac.posalji(odgovor);
+    }
+
+    private void obradiObrisiKnjigu(Zahtev zahtev) throws IOException {
+        Odgovor odgovor = new Odgovor();
+        try {
+            Knjiga k = (Knjiga) zahtev.getParametar();
+            Kontroler.getInstanca().obrisiKnjigu(k);
+            odgovor.setOdgovor(k);
+        } catch(Exception e) {
+            odgovor.setOdgovor(e);
+        }
+        posiljalac.posalji(odgovor);
+    }
+
+    private void obradiUcitajAutore() throws Exception {
+        Odgovor odgovor = new Odgovor();
+        List<Autor> autori = Kontroler.getInstanca().ucitajAutore();
+        odgovor.setOdgovor(autori);
+        posiljalac.posalji(odgovor);
+    }
+
+    private void obradiUcitajPozajmice() throws Exception {
+        Odgovor odgovor = new Odgovor();
+        List<Zaduzenje> pozajmice = Kontroler.getInstanca().ucitajPozajmice();
+        odgovor.setOdgovor(pozajmice);
+        posiljalac.posalji(odgovor);
+    }
+
+    private void obradiDodajPozajmicu(Zahtev zahtev) throws IOException {
+        Odgovor odgovor = new Odgovor();
+        try {
+            Zaduzenje p = (Zaduzenje) zahtev.getParametar();
+            Kontroler.getInstanca().dodajPozajmicu(p);                            
+            odgovor.setOdgovor(null);
+        } catch(Exception e) {
+            odgovor.setOdgovor(e);
+        }
+        posiljalac.posalji(odgovor);
+    }
+
+    private void obradiHeartbeat() throws IOException {
+        posiljalac.posalji(new Odgovor());
     }
 }
