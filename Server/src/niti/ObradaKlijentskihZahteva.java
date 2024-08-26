@@ -42,6 +42,8 @@ public class ObradaKlijentskihZahteva extends Thread {
                 Odgovor odgovor = new Odgovor();
 
                 switch (zahtev.getOperacija()) {
+                    case HEARTBEAT:
+                        break;
                     case KRAJ_RADA:
                         prekiniNit();
                         return;

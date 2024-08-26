@@ -29,6 +29,7 @@ public class Komunikacija {
     
     private Komunikacija() {
         konekcija();
+        startHeartbeat();
     }
     
     public static Komunikacija getInstanca() {
@@ -47,6 +48,27 @@ public class Komunikacija {
             JOptionPane.showMessageDialog(null, "Neuspesno povezivanje sa serverom. Proverite da li je server pokrenut.", "Greska", JOptionPane.ERROR_MESSAGE);
             System.exit(1);
         }
+    }
+    
+    public void startHeartbeat() {
+        new Thread(() -> {
+            while (true) {
+                try {
+                    Zahtev z = new Zahtev(Operacija.HEARTBEAT, null);
+                    posiljalac.posalji(z);
+                    Odgovor odgovor = (Odgovor) primalac.primi();
+                    Thread.sleep(5000); // Sleep for 5 seconds before sending the next heartbeat
+                } catch (IOException ioex) {
+                    JOptionPane.showMessageDialog(null, "Server je pao. Bicete diskonektovani");
+                    zatvoriResurse();
+                    System.exit(0);
+                } catch (InterruptedException e) {
+                    System.err.println("Heartbeat thread interrupted: " + e.getMessage());
+                    Thread.currentThread().interrupt(); // Restore the interrupted status
+                    break; // Exit the loop if the thread is interrupted
+                }
+            }
+        }).start();
     }
     
     public void zatvoriResurse() {
