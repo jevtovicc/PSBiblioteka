@@ -8,6 +8,7 @@ import domen.Knjiga;
 import forme.knjiga.IzmeniKnjiguForma;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 import komunikacija.Komunikacija;
 
@@ -56,10 +57,14 @@ public class IzmeniKnjiguKontroler {
                    Komunikacija.getInstanca().izmeniKnjigu(knjigaZaIzmenu);
                    JOptionPane.showMessageDialog(ikforma, "Sistem je izmenio podatke o knjizi", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
                    ikforma.dispose();
+               } catch(IOException ioex) {
+                    JOptionPane.showMessageDialog(ikforma, "Server je pao. Nije moguce obaviti operaciju. Bicete izlogovani sa sistema.", "Greska", JOptionPane.ERROR_MESSAGE);
+                    Komunikacija.getInstanca().zatvoriResurse();
+                    System.exit(0);
                } catch(Exception ex) {
-                   String porukaGreske = ex.getMessage();
-                   JOptionPane.showMessageDialog(ikforma, porukaGreske, "Greska", JOptionPane.ERROR_MESSAGE);
-               }
+                    String porukaGreske = ex.getMessage();
+                    JOptionPane.showMessageDialog(ikforma, porukaGreske, "Greska", JOptionPane.ERROR_MESSAGE);
+               } 
            }
         });
     }

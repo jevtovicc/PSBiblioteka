@@ -8,6 +8,7 @@ import domen.Clan;
 import forme.clan.IzmeniClanaForma;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -87,10 +88,14 @@ public class IzmeniClanaKontroler {
                    Komunikacija.getInstanca().izmeniClana(clanZaIzmenu);
                    JOptionPane.showMessageDialog(icforma, "Sistem je izmenio podatke o clanu", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
                    icforma.dispose();
-               } catch(Exception ex) {
-                   String porukaGreske = ex.getMessage();
-                   JOptionPane.showMessageDialog(icforma, porukaGreske, "Greska", JOptionPane.ERROR_MESSAGE);
-               }
+               } catch(IOException ioex) {
+                    JOptionPane.showMessageDialog(icforma, "Server je pao. Nije moguce obaviti operaciju. Bicete izlogovani sa sistema.", "Greska", JOptionPane.ERROR_MESSAGE);
+                    Komunikacija.getInstanca().zatvoriResurse();
+                    System.exit(0);
+                } catch(Exception ex) {
+                    String porukaGreske = ex.getMessage();
+                    JOptionPane.showMessageDialog(icforma, porukaGreske, "Greska", JOptionPane.ERROR_MESSAGE);
+                } 
            }
         });
     }

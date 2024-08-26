@@ -44,10 +44,14 @@ public class PregledClanovaKontroler {
                         Komunikacija.getInstanca().obrisiClana(c);
                         JOptionPane.showMessageDialog(pcforma, "Sistem je obrisao clana", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
                         pripremiFormu(); // Videti drugi nacin, jer se ovako ponovo vrsi poziv do baze
-                    } catch(Exception ex) {
+                    } catch(IOException ioex) {
+                        JOptionPane.showMessageDialog(pcforma, "Server je pao. Nije moguce obaviti operaciju. Bicete izlogovani sa sistema.", "Greska", JOptionPane.ERROR_MESSAGE);
+                        Komunikacija.getInstanca().zatvoriResurse();
+                        System.exit(0);
+                   } catch(Exception ex) {
                         String porukaGreske = ex.getMessage();
                         JOptionPane.showMessageDialog(pcforma, porukaGreske, "Greska", JOptionPane.ERROR_MESSAGE);
-                    }
+                   } 
                 }
             }
             

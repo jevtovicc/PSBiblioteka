@@ -8,6 +8,7 @@ import domen.Clan;
 import forme.clan.DodajClanaForma;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -85,6 +86,10 @@ public class DodajClanaKontroler {
                    Komunikacija.getInstanca().dodajClana(c);
                    JOptionPane.showMessageDialog(dcforma, "Sistem je kreirao clana", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
                    dcforma.dispose();
+               } catch (IOException ioex) {
+                    JOptionPane.showMessageDialog(dcforma, "Server je pao. Nije moguce obaviti operaciju. Bicete izlogovani sa sistema.", "Greska", JOptionPane.ERROR_MESSAGE);
+                    Komunikacija.getInstanca().zatvoriResurse();
+                    System.exit(0);
                } catch(Exception ex) {
                    String porukaGreske = ex.getMessage();
                    JOptionPane.showMessageDialog(dcforma, porukaGreske, "Greska", JOptionPane.ERROR_MESSAGE);

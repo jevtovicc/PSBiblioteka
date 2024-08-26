@@ -70,10 +70,14 @@ public class DodajKnjiguKontroler {
                         Komunikacija.getInstanca().dodajKnjigu(k);
                         JOptionPane.showMessageDialog(dkforma, "Sistem je kreirao knjigu", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
                         dkforma.dispose();
-                    } catch(Exception ex) {
+                   } catch(IOException ioex) {
+                        JOptionPane.showMessageDialog(dkforma, "Server je pao. Nije moguce obaviti operaciju. Bicete izlogovani sa sistema.", "Greska", JOptionPane.ERROR_MESSAGE);
+                        Komunikacija.getInstanca().zatvoriResurse();
+                        System.exit(0);
+                   } catch(Exception ex) {
                         String porukaGreske = ex.getMessage();
                         JOptionPane.showMessageDialog(dkforma, porukaGreske, "Greska", JOptionPane.ERROR_MESSAGE);
-                    } 
+                   } 
                }
            }
         });
