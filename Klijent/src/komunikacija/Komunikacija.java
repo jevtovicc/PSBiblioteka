@@ -11,7 +11,6 @@ import domen.Zaduzenje;
 import domen.Zaposleni;
 import java.io.IOException;
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -50,7 +49,7 @@ public class Komunikacija {
         }
     }
     
-    private void zatvoriResurse() {
+    public void zatvoriResurse() {
         try {
             soket.close();
         } catch (IOException ex) {
@@ -58,7 +57,7 @@ public class Komunikacija {
         }
     }
 
-    public Zaposleni login(String korIme, String lozinka) {
+    public Zaposleni login(String korIme, String lozinka) throws IOException {
         Zaposleni z = new Zaposleni();
         z.setKorisnickoIme(korIme);
         z.setLozinka(lozinka);
@@ -72,7 +71,7 @@ public class Komunikacija {
         return z;
     }
 
-    public List<Clan> ucitajClanove() {
+    public List<Clan> ucitajClanove() throws IOException {
         Zahtev zahtev = new Zahtev(Operacija.UCITAJ_CLANOVE, null);
         posiljalac.posalji(zahtev);
         
@@ -114,7 +113,7 @@ public class Komunikacija {
         }
     }
 
-    public List<Knjiga> ucitajKnjige() {
+    public List<Knjiga> ucitajKnjige() throws IOException {
         Zahtev zahtev = new Zahtev(Operacija.UCITAJ_KNJIGE, null);
         posiljalac.posalji(zahtev);
         
@@ -134,7 +133,7 @@ public class Komunikacija {
         }
     }
 
-    public List<Autor> ucitajAutore() {
+    public List<Autor> ucitajAutore() throws IOException {
         Zahtev zahtev = new Zahtev(Operacija.UCITAJ_AUTORE, null);
         posiljalac.posalji(zahtev);
         
@@ -166,7 +165,7 @@ public class Komunikacija {
         }
     }
 
-    public List<Zaduzenje> ucitajPozajmice() {
+    public List<Zaduzenje> ucitajPozajmice() throws IOException {
         Zahtev zahtev = new Zahtev(Operacija.UCITAJ_POZAJMICE, null);
         posiljalac.posalji(zahtev);
         
@@ -186,7 +185,7 @@ public class Komunikacija {
         }
     }
 
-    public void posaljiKrajRada() {
+    public void posaljiKrajRada() throws IOException {
         Zahtev zahtev = new Zahtev(Operacija.KRAJ_RADA, null);
         posiljalac.posalji(zahtev);
         zatvoriResurse();

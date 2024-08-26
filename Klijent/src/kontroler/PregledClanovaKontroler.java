@@ -9,7 +9,10 @@ import forme.clan.PregledClanovaForma;
 import forme.model.ModelTabeleClan;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import komunikacija.Komunikacija;
 import koordinator.Koordinator;
@@ -92,9 +95,15 @@ public class PregledClanovaKontroler {
     }
 
     public void pripremiFormu() {
-        List<Clan> clanovi = komunikacija.Komunikacija.getInstanca().ucitajClanove();
-        ModelTabeleClan mtc = new ModelTabeleClan(clanovi);
-        pcforma.getjTableClanovi().setModel(mtc);
+        try {
+            List<Clan> clanovi = komunikacija.Komunikacija.getInstanca().ucitajClanove();
+            ModelTabeleClan mtc = new ModelTabeleClan(clanovi);
+            pcforma.getjTableClanovi().setModel(mtc);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(pcforma, "Server je pao. Nije moguce obaviti operaciju. Bicete izlogovani sa sistema.", "Greska", JOptionPane.ERROR_MESSAGE);
+            Komunikacija.getInstanca().zatvoriResurse();
+            System.exit(0);
+        }
     }
     
 }

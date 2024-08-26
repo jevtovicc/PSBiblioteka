@@ -12,10 +12,13 @@ import forme.model.ModelTabeleKnjiga;
 import forme.zaduzenje.DodajZaduzenjeForma;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import komunikacija.Komunikacija;
 
@@ -143,11 +146,17 @@ public class DodajZaduzenjeKontroler {
     }
     
     public void pripremiFormu() {
-        List<Clan> clanovi = komunikacija.Komunikacija.getInstanca().ucitajClanove();
-        List<Knjiga> knjige = komunikacija.Komunikacija.getInstanca().ucitajKnjige();
-        ModelTabeleClan mtc = new ModelTabeleClan(clanovi);
-        ModelTabeleKnjiga mtk = new ModelTabeleKnjiga(knjige);
-        dpf.getjTableClanovi().setModel(mtc);
-        dpf.getjTableKnjige().setModel(mtk);
+        try {
+            List<Clan> clanovi = komunikacija.Komunikacija.getInstanca().ucitajClanove();
+            List<Knjiga> knjige = komunikacija.Komunikacija.getInstanca().ucitajKnjige();
+            ModelTabeleClan mtc = new ModelTabeleClan(clanovi);
+            ModelTabeleKnjiga mtk = new ModelTabeleKnjiga(knjige);
+            dpf.getjTableClanovi().setModel(mtc);
+            dpf.getjTableKnjige().setModel(mtk);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(dpf, "Server je pao. Nije moguce obaviti operaciju. Bicete izlogovani sa sistema.", "Greska", JOptionPane.ERROR_MESSAGE);
+            Komunikacija.getInstanca().zatvoriResurse();
+            System.exit(0);
+        }
     }
 }

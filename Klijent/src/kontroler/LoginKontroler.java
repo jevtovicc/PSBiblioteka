@@ -8,6 +8,9 @@ import domen.Zaposleni;
 import forme.prijava.LoginForma;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import komunikacija.Komunikacija;
 import koordinator.Koordinator;
@@ -45,15 +48,21 @@ public class LoginKontroler {
                    return;
                }
                
-               Zaposleni z = Komunikacija.getInstanca().login(korIme, lozinka);
-               if(z == null) {
-                   JOptionPane.showMessageDialog(lf, "Prijava na sistem neuspesna", "Greska", JOptionPane.ERROR_MESSAGE);
-               } else {
-                   Koordinator.getInstanca().setUlogovani(z);
-                   JOptionPane.showMessageDialog(lf, "Prijava na sistem uspesna", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
-                   Koordinator.getInstanca().otvoriGlavnuFormu();
-                   lf.dispose();
-               }
+               try {
+                   Zaposleni z = Komunikacija.getInstanca().login(korIme, lozinka);
+                   if(z == null) {
+                       JOptionPane.showMessageDialog(lf, "Sistem ne moze da pronadje zaposlenog po zadatoj vrednosti", "Greska", JOptionPane.ERROR_MESSAGE);
+                   } else {
+                        Koordinator.getInstanca().setUlogovani(z);
+                        JOptionPane.showMessageDialog(lf, "Prijava na sistem uspesna", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
+                        Koordinator.getInstanca().otvoriGlavnuFormu();
+                        lf.dispose();
+                    }
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(lf, "Server je pao. Nije moguce obaviti operaciju. Bicete izlogovani sa sistema.", "Greska", JOptionPane.ERROR_MESSAGE);
+                    Komunikacija.getInstanca().zatvoriResurse();
+                    System.exit(0);
+                }
            }
         });
     }

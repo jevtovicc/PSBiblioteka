@@ -19,13 +19,9 @@ public class Posiljalac {
         this.socket = socket;
     }
     
-    public void posalji(Object obj) {
-        try {
-            ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
-            out.writeObject(obj);
-            out.flush();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+    public void posalji(Object obj) throws IOException {
+        ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
+        out.writeObject(obj);
+        out.flush();
     }
 }

@@ -10,7 +10,10 @@ import forme.knjiga.DodajKnjiguForma;
 import forme.model.ModelTabeleAutor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import komunikacija.Komunikacija;
 
@@ -99,8 +102,16 @@ public class DodajKnjiguKontroler {
     }
     
     public void pripremiFormu() {
-        List<Autor> autori = komunikacija.Komunikacija.getInstanca().ucitajAutore();
-        ModelTabeleAutor mta = new ModelTabeleAutor(autori);
-        dkforma.getjTableAutori().setModel(mta);
+        List<Autor> autori;
+        try {
+            autori = komunikacija.Komunikacija.getInstanca().ucitajAutore();
+            ModelTabeleAutor mta = new ModelTabeleAutor(autori);
+            dkforma.getjTableAutori().setModel(mta);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(dkforma, "Server je pao. Nije moguce obaviti operaciju. Bicete izlogovani sa sistema.", "Greska", JOptionPane.ERROR_MESSAGE);
+            Komunikacija.getInstanca().zatvoriResurse();
+            System.exit(0);
+        }
+        
     }
 }

@@ -11,7 +11,10 @@ import forme.model.ModelTabeleClan;
 import forme.model.ModelTabeleKnjiga;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import komunikacija.Komunikacija;
 import koordinator.Koordinator;
@@ -92,8 +95,14 @@ public class PregledKnjigaKontroler {
     }
 
     public void pripremiFormu() {
-        List<Knjiga> knjige = komunikacija.Komunikacija.getInstanca().ucitajKnjige();
-        ModelTabeleKnjiga mtk = new ModelTabeleKnjiga(knjige);
-        pkf.getjTableKnjige().setModel(mtk);
+        try {
+            List<Knjiga> knjige = komunikacija.Komunikacija.getInstanca().ucitajKnjige();
+            ModelTabeleKnjiga mtk = new ModelTabeleKnjiga(knjige);
+            pkf.getjTableKnjige().setModel(mtk);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(pkf, "Server je pao. Nije moguce obaviti operaciju. Bicete izlogovani sa sistema.", "Greska", JOptionPane.ERROR_MESSAGE);
+            Komunikacija.getInstanca().zatvoriResurse();
+            System.exit(0);
+        }
     }
 }

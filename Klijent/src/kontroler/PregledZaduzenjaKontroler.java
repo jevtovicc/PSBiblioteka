@@ -11,7 +11,12 @@ import forme.model.ModelTabeleZaduzenje;
 import forme.zaduzenje.PregledZaduzenjaForma;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import komunikacija.Komunikacija;
 
 /**
  *
@@ -53,8 +58,14 @@ public class PregledZaduzenjaKontroler {
     }
 
     public void pripremiFormu() {
-        List<Zaduzenje> pozajmice = komunikacija.Komunikacija.getInstanca().ucitajPozajmice();
-        ModelTabeleZaduzenje mtp = new ModelTabeleZaduzenje(pozajmice);
-        ppf.getjTablePozajmice().setModel(mtp);
+        try {
+            List<Zaduzenje> pozajmice = komunikacija.Komunikacija.getInstanca().ucitajPozajmice();
+            ModelTabeleZaduzenje mtp = new ModelTabeleZaduzenje(pozajmice);
+            ppf.getjTablePozajmice().setModel(mtp);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(ppf, "Server je pao. Nije moguce obaviti operaciju. Bicete izlogovani sa sistema.", "Greska", JOptionPane.ERROR_MESSAGE);
+            Komunikacija.getInstanca().zatvoriResurse();
+            System.exit(0);
+        }
     }
 }
