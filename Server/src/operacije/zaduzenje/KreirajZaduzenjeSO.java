@@ -4,7 +4,6 @@
  */
 package operacije.zaduzenje;
 
-import domen.Knjiga;
 import domen.Zaduzenje;
 import operacije.ApstraktnaGenerickaOperacija;
 

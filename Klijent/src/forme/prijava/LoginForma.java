@@ -61,6 +61,7 @@ public class LoginForma extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Prijava");
 
         jLabel1.setText("Korisnicko ime:");
 

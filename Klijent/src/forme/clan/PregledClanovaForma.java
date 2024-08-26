@@ -42,6 +42,7 @@ public class PregledClanovaForma extends javax.swing.JFrame {
         jButtonResetuj = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Pregled Clanova");
 
         jTableClanovi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

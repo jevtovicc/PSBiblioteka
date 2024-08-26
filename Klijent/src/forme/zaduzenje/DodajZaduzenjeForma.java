@@ -51,6 +51,7 @@ public class DodajZaduzenjeForma extends javax.swing.JFrame {
         jButtonDodajPozajmicu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Dodaj Zaduzenje");
 
         jLabel1.setText("Datum zaduzenja (dd/MM/yyyy):");
 

@@ -41,6 +41,7 @@ public class IzmeniClanaForma extends javax.swing.JFrame {
         jTextFieldDatumIsteka = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Izmeni Clana");
 
         jLabel1.setText("Ime i Prezime:");
 

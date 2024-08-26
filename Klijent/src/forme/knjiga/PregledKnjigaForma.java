@@ -42,6 +42,7 @@ public class PregledKnjigaForma extends javax.swing.JFrame {
         jButtonIzmeni = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Pregled Knjiga");
 
         jLabel1.setText("Naziv:");
 

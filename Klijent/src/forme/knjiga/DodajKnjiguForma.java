@@ -48,6 +48,7 @@ public class DodajKnjiguForma extends javax.swing.JFrame {
         jSpinnerKolicina = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Dodaj Knjigu");
 
         jLabel1.setText("Naziv:");
 

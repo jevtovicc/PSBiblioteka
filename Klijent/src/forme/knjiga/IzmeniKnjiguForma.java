@@ -21,6 +21,7 @@ public class IzmeniKnjiguForma extends javax.swing.JFrame {
      */
     public IzmeniKnjiguForma() {
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -47,6 +48,7 @@ public class IzmeniKnjiguForma extends javax.swing.JFrame {
         jButtonIzmeni = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Izmeni Knjigu");
 
         jLabel1.setText("Naziv:");
 

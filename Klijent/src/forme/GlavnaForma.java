@@ -65,6 +65,7 @@ public class GlavnaForma extends javax.swing.JFrame {
         jMenuItemPregledZaduzenja = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Glavna Forma");
 
         jLabel1.setText("Dobrodosli");
 
