@@ -15,7 +15,7 @@ public class KreirajZaduzenjeSO extends ApstraktnaGenerickaOperacija {
     @Override
     protected void preduslovi(Object param) throws Exception {
         if(param == null || !(param instanceof Zaduzenje)) {
-            throw new Exception("Sistem ne moze da kreira pozajmicu");
+            throw new Exception("Sistem ne moze da zapamti zaduzenje");
         }
     }
 

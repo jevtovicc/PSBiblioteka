@@ -65,7 +65,7 @@ public class IzmeniKnjiguKontroler {
                    knjigaZaIzmenu.setAutor(a);
                    try {
                         Komunikacija.getInstanca().izmeniKnjigu(knjigaZaIzmenu);
-                        JOptionPane.showMessageDialog(ikforma, "Sistem je izmenio podatke o knjizi", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(ikforma, "Sistem je izmenio knjigu", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
                         ikforma.dispose();
                     } catch(IOException ioex) {
                          JOptionPane.showMessageDialog(ikforma, "Server je pao. Nije moguce obaviti operaciju. Bicete izlogovani sa sistema.", "Greska", JOptionPane.ERROR_MESSAGE);
@@ -110,7 +110,7 @@ public class IzmeniKnjiguKontroler {
                 a.setImePrezime(nazivAutora);
                 try {
                     Komunikacija.getInstanca().dodajAutora(a);
-                    JOptionPane.showMessageDialog(ikforma, "Sistem je kreirao autora", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(ikforma, "Sistem je sacuvao autora", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
                     osveziFormu();
                     selektujAutora((ModelTabeleAutor) ikforma.getjTableAutori().getModel(), a);
                 } catch(IOException ioex) {

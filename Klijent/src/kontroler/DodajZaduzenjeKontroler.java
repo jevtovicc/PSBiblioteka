@@ -96,7 +96,7 @@ public class DodajZaduzenjeKontroler {
                
                try {
                     Komunikacija.getInstanca().dodajPozajmicu(p);
-                    JOptionPane.showMessageDialog(dpf, "Sistem je kreirao zaduzenje", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(dpf, "Sistem je zapamtio zaduzenje", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
                     dpf.dispose();
                 } catch(IOException ioex) {
                     JOptionPane.showMessageDialog(dpf, "Server je pao. Nije moguce obaviti operaciju. Bicete izlogovani sa sistema.", "Greska", JOptionPane.ERROR_MESSAGE);

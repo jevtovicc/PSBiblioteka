@@ -51,7 +51,7 @@ public class LoginKontroler {
                try {
                    Zaposleni z = Komunikacija.getInstanca().login(korIme, lozinka);
                    if(z == null) {
-                       JOptionPane.showMessageDialog(lf, "Sistem ne moze da pronadje zaposlenog po zadatoj vrednosti", "Greska", JOptionPane.ERROR_MESSAGE);
+                       JOptionPane.showMessageDialog(lf, "Sistem ne moze da pronadje trazeni nalog", "Greska", JOptionPane.ERROR_MESSAGE);
                    } else {
                         Koordinator.getInstanca().setUlogovani(z);
                         JOptionPane.showMessageDialog(lf, "Prijava na sistem uspesna", "Uspeh", JOptionPane.INFORMATION_MESSAGE);

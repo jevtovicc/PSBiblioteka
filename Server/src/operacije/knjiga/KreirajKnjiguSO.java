@@ -16,11 +16,11 @@ public class KreirajKnjiguSO extends ApstraktnaGenerickaOperacija {
     @Override
     protected void preduslovi(Object param) throws Exception {
         if(param == null || !(param instanceof Knjiga)) {
-            throw new Exception("Sistem ne moze da kreira knjigu");
+            throw new Exception("Sistem ne moze da zapamti knjigu");
         }
         Knjiga k = (Knjiga) param;
         if (k.getNazivKnjige().isEmpty() || k.getISBN().isEmpty() || k.getAutor() == null) {
-            throw new Exception("Sistem ne moze da kreira knjigu");
+            throw new Exception("Sistem ne moze da zapamti knjigu");
         }
     }
 

@@ -86,7 +86,7 @@ public class IzmeniClanaKontroler {
               
                try {
                    Komunikacija.getInstanca().izmeniClana(clanZaIzmenu);
-                   JOptionPane.showMessageDialog(icforma, "Sistem je izmenio podatke o clanu", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
+                   JOptionPane.showMessageDialog(icforma, "Sistem je zapamtio clana", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
                    icforma.dispose();
                } catch(IOException ioex) {
                     JOptionPane.showMessageDialog(icforma, "Server je pao. Nije moguce obaviti operaciju. Bicete izlogovani sa sistema.", "Greska", JOptionPane.ERROR_MESSAGE);

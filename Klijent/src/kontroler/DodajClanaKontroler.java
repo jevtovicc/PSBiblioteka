@@ -84,7 +84,7 @@ public class DodajClanaKontroler {
                
                try {
                    Komunikacija.getInstanca().dodajClana(c);
-                   JOptionPane.showMessageDialog(dcforma, "Sistem je kreirao clana", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
+                   JOptionPane.showMessageDialog(dcforma, "Sistem je zapamtio clana", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
                    dcforma.dispose();
                } catch (IOException ioex) {
                     JOptionPane.showMessageDialog(dcforma, "Server je pao. Nije moguce obaviti operaciju. Bicete izlogovani sa sistema.", "Greska", JOptionPane.ERROR_MESSAGE);

@@ -16,11 +16,11 @@ public class KreirajClanaSO extends ApstraktnaGenerickaOperacija {
     @Override
     protected void preduslovi(Object param) throws Exception {
         if(param == null || !(param instanceof Clan)) {
-            throw new Exception("Sistem ne moze da kreira clana");
+            throw new Exception("Sistem ne moze da zapamti clana");
         }
         Clan c = (Clan) param;
         if (c.getImePrezime().isEmpty() || c.getAdresaStanovanja().isEmpty()) {
-            throw new Exception("Sistem ne moze da kreira clana");
+            throw new Exception("Sistem ne moze da zapamti clana");
         }
     }
 

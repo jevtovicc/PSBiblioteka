@@ -39,6 +39,11 @@ public class PregledZaduzenjaKontroler {
                 String nazivKnjige = ppf.getjTextFieldNazivKnjige().getText().trim();
                 ModelTabeleZaduzenje mtp = (ModelTabeleZaduzenje) ppf.getjTablePozajmice().getModel();
                 mtp.pretrazi(imePrezimeClana, nazivKnjige);
+                if (mtp.getLista().isEmpty()) {
+                    JOptionPane.showMessageDialog(ppf, "Sistem ne moze da nadje zaduzenja po zadatoj vrednosti", "", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(ppf, "Sistem je nasao zaduzenja po zadatoj vrednosti", "", JOptionPane.INFORMATION_MESSAGE);
+                }
             }
         });
         

@@ -81,6 +81,11 @@ public class PregledKnjigaKontroler {
                 String naziv = pkf.getjTextFieldNazivKnjige().getText().trim();
                 ModelTabeleKnjiga mtk = (ModelTabeleKnjiga) pkf.getjTableKnjige().getModel();
                 mtk.pretrazi(naziv);
+                if (mtk.getLista().isEmpty()) {
+                    JOptionPane.showMessageDialog(pkf, "Sistem ne moze da nadje knjige po zadatoj vrednosti", "", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(pkf, "Sistem je nasao knjige po zadatoj vrednosti", "", JOptionPane.INFORMATION_MESSAGE);
+                }
             }
         });
         
@@ -103,6 +108,7 @@ public class PregledKnjigaKontroler {
             List<Knjiga> knjige = komunikacija.Komunikacija.getInstanca().ucitajKnjige();
             ModelTabeleKnjiga mtk = new ModelTabeleKnjiga(knjige);
             pkf.getjTableKnjige().setModel(mtk);
+            pkf.getjTextFieldNazivKnjige().setText("");
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(pkf, "Server je pao. Nije moguce obaviti operaciju. Bicete izlogovani sa sistema.", "Greska", JOptionPane.ERROR_MESSAGE);
             Komunikacija.getInstanca().zatvoriResurse();

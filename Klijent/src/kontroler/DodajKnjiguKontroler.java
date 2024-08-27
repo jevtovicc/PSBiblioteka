@@ -68,7 +68,7 @@ public class DodajKnjiguKontroler {
                    
                    try {
                         Komunikacija.getInstanca().dodajKnjigu(k);
-                        JOptionPane.showMessageDialog(dkforma, "Sistem je kreirao knjigu", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(dkforma, "Sistem je zapamtio knjigu", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
                         dkforma.dispose();
                    } catch(IOException ioex) {
                         JOptionPane.showMessageDialog(dkforma, "Server je pao. Nije moguce obaviti operaciju. Bicete izlogovani sa sistema.", "Greska", JOptionPane.ERROR_MESSAGE);

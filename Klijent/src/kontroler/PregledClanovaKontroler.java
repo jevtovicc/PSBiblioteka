@@ -80,6 +80,11 @@ public class PregledClanovaKontroler {
                 String imePrezime = pcforma.getjTextFieldIme().getText().trim();
                 ModelTabeleClan mtc = (ModelTabeleClan) pcforma.getjTableClanovi().getModel();
                 mtc.pretrazi(imePrezime);
+                if (mtc.getLista().isEmpty()) {
+                    JOptionPane.showMessageDialog(pcforma, "Sistem ne moze da nadje clanove po zadatoj vrednosti", "", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(pcforma, "Sistem je nasao clanove po zadatoj vrednosti", "", JOptionPane.INFORMATION_MESSAGE);
+                }
             }
         });
         
@@ -103,6 +108,7 @@ public class PregledClanovaKontroler {
             List<Clan> clanovi = komunikacija.Komunikacija.getInstanca().ucitajClanove();
             ModelTabeleClan mtc = new ModelTabeleClan(clanovi);
             pcforma.getjTableClanovi().setModel(mtc);
+            pcforma.getjTextFieldIme().setText("");
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(pcforma, "Server je pao. Nije moguce obaviti operaciju. Bicete izlogovani sa sistema.", "Greska", JOptionPane.ERROR_MESSAGE);
             Komunikacija.getInstanca().zatvoriResurse();
