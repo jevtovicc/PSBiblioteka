@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import konfiguracija.Konfiguracija;
 import niti.ObradaKlijentskihZahteva;
 
 /**
@@ -31,7 +32,8 @@ public class Server extends Thread {
     public void run() {
         kraj = false;
         try {
-            serverSoket = new ServerSocket(9000);
+            int port = Integer.parseInt(Konfiguracija.getInstanca().getProperty("port"));
+            serverSoket = new ServerSocket(port);
             while(!kraj) {
                 Socket soket = serverSoket.accept();
                 ObradaKlijentskihZahteva okz = new ObradaKlijentskihZahteva(soket);
