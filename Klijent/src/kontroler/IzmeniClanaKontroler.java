@@ -94,7 +94,7 @@ public class IzmeniClanaKontroler {
                     System.exit(0);
                 } catch(Exception ex) {
                     String porukaGreske = ex.getMessage();
-                    JOptionPane.showMessageDialog(icforma, porukaGreske, "Greska", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(icforma, "Sistem ne moze da zapamti clana", "Greska", JOptionPane.ERROR_MESSAGE);
                 } 
            }
         });

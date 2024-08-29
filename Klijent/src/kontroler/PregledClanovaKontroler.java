@@ -50,7 +50,7 @@ public class PregledClanovaKontroler {
                         System.exit(0);
                    } catch(Exception ex) {
                         String porukaGreske = ex.getMessage();
-                        JOptionPane.showMessageDialog(pcforma, porukaGreske, "Greska", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(pcforma, "Sistem ne moze da obrise clana", "Greska", JOptionPane.ERROR_MESSAGE);
                    } 
                 }
             }

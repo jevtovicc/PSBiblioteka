@@ -52,7 +52,7 @@ public class PregledKnjigaKontroler {
                         System.exit(0);
                    } catch(Exception ex) {
                         String porukaGreske = ex.getMessage();
-                        JOptionPane.showMessageDialog(pkf, porukaGreske, "Greska", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(pkf, "Sistem ne moze da obrise knjigu", "Greska", JOptionPane.ERROR_MESSAGE);
                    } 
                 }
             }

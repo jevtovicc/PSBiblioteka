@@ -26,6 +26,7 @@ public class Komunikacija {
     private Posiljalac posiljalac;
     private Primalac primalac;
     private static Komunikacija instanca;
+    private boolean kraj;
     
     private Komunikacija() {
         konekcija();
@@ -52,7 +53,7 @@ public class Komunikacija {
     
     public void startHeartbeat() {
         new Thread(() -> {
-            while (true) {
+            while (!kraj) {
                 try {
                     Zahtev z = new Zahtev(Operacija.HEARTBEAT, null);
                     posiljalac.posalji(z);
@@ -188,7 +189,7 @@ public class Komunikacija {
     }
 
     public List<Zaduzenje> ucitajPozajmice() throws IOException {
-        Zahtev zahtev = new Zahtev(Operacija.UCITAJ_POZAJMICE, null);
+        Zahtev zahtev = new Zahtev(Operacija.UCITAJ_ZADUZENJA, null);
         posiljalac.posalji(zahtev);
         
         Odgovor odgovor = (Odgovor) primalac.primi();
@@ -198,7 +199,7 @@ public class Komunikacija {
     }
 
     public void dodajPozajmicu(Zaduzenje p) throws Exception {
-        Zahtev zahtev = new Zahtev(Operacija.DODAJ_POZAJMICU, p);
+        Zahtev zahtev = new Zahtev(Operacija.DODAJ_ZADUZENJE, p);
         posiljalac.posalji(zahtev);
         
         Odgovor odgovor = (Odgovor) primalac.primi();
@@ -210,6 +211,7 @@ public class Komunikacija {
     public void posaljiKrajRada() throws IOException {
         Zahtev zahtev = new Zahtev(Operacija.KRAJ_RADA, null);
         posiljalac.posalji(zahtev);
+        kraj = true;
         zatvoriResurse();
     }
 
@@ -220,6 +222,28 @@ public class Komunikacija {
         Odgovor odgovor = (Odgovor) primalac.primi();
         if (odgovor.getOdgovor() instanceof Exception e) {
             throw new Exception(e);
+        }
+    }
+
+    public void obrisiZaduzenje(Zaduzenje z) throws Exception {
+        Zahtev zahtev = new Zahtev(Operacija.OBRISI_ZADUZENJE, z);
+        posiljalac.posalji(zahtev);
+        
+        Odgovor odgovor = (Odgovor) primalac.primi();
+        if (odgovor.getOdgovor() instanceof Exception e) {
+            throw new Exception(e);
+        }
+    }
+
+    public void izmeniZaduzenje(Zaduzenje zaduzenjeZaIzmenu) throws Exception {
+        Zahtev zahtev = new Zahtev(Operacija.IZMENI_ZADUZENJE, zaduzenjeZaIzmenu);
+        posiljalac.posalji(zahtev);
+        
+        Odgovor odgovor = (Odgovor) primalac.primi();
+        if (odgovor.getOdgovor() instanceof Exception e) {
+            throw new Exception(e);
+        } else {
+            Koordinator.getInstanca().osveziPregledZaduzenjaFormu();
         }
     }
 }

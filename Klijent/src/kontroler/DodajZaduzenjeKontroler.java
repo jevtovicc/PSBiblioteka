@@ -66,6 +66,10 @@ public class DodajZaduzenjeKontroler {
                } else {
                    try {                   
                        Date datumVracanja = formatter.parse(datumVracanjaString);
+                       if (datumVracanja.before(p.getDatumZaduzenja())) {
+                           JOptionPane.showMessageDialog(dpf, "Datum razduzenja mora biti nakon datuma zaduzenja", "Greska", JOptionPane.ERROR_MESSAGE);
+                           return;
+                       }
                        p.setDatumRazduzenja(datumVracanja);
                    } catch (ParseException pex) {
                        JOptionPane.showMessageDialog(dpf, "Datum razduzenja mora biti u odgovarajucem formatu", "Greska", JOptionPane.ERROR_MESSAGE);
@@ -90,6 +94,10 @@ public class DodajZaduzenjeKontroler {
                } else {
                    ModelTabeleKnjiga mtk = (ModelTabeleKnjiga) dpf.getjTableKnjige().getModel();
                    Knjiga k = mtk.getLista().get(redKnjige);
+                   if (k.getKolicina() == 0) {
+                       JOptionPane.showMessageDialog(dpf, "Odabrana knjiga trenutno nije na stanju", "Greska", JOptionPane.ERROR_MESSAGE);
+                       return;
+                   }
                    p.setKnjiga(k);
                }               
                
@@ -104,7 +112,7 @@ public class DodajZaduzenjeKontroler {
                     System.exit(0);
                 } catch(Exception ex) {
                     String porukaGreske = ex.getMessage();
-                    JOptionPane.showMessageDialog(dpf, porukaGreske, "Greska", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(dpf, "Sistem ne moze da zapamti zaduzenje", "Greska", JOptionPane.ERROR_MESSAGE);
                 } 
            }
         });

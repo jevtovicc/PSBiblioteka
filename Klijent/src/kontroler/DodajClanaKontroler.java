@@ -92,7 +92,7 @@ public class DodajClanaKontroler {
                     System.exit(0);
                } catch(Exception ex) {
                    String porukaGreske = ex.getMessage();
-                   JOptionPane.showMessageDialog(dcforma, porukaGreske, "Greska", JOptionPane.ERROR_MESSAGE);
+                   JOptionPane.showMessageDialog(dcforma, "Sistem ne moze da zapamti clana", "Greska", JOptionPane.ERROR_MESSAGE);
                }
            }
         });

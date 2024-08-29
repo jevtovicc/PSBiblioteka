@@ -4,7 +4,6 @@
  */
 package kontroler;
 
-import domen.Knjiga;
 import domen.Zaduzenje;
 import forme.model.ModelTabeleKnjiga;
 import forme.model.ModelTabeleZaduzenje;
@@ -13,8 +12,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import komunikacija.Komunikacija;
 
@@ -54,6 +51,60 @@ public class PregledZaduzenjaKontroler {
                 ppf.getjTextFieldImePrezimeClana().setText("");
                 pripremiFormu();
             }
+        });
+        
+        ppf.addBtnObrisiActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int red = ppf.getjTablePozajmice().getSelectedRow();
+                if(red == -1) {
+                    JOptionPane.showMessageDialog(ppf, "Morate izabrati zaduzenje za brisanje", "Greska", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    ModelTabeleZaduzenje mtz = (ModelTabeleZaduzenje) ppf.getjTablePozajmice().getModel();
+                    Zaduzenje z = mtz.getLista().get(red);
+                    try {
+                        Komunikacija.getInstanca().obrisiZaduzenje(z);
+                        JOptionPane.showMessageDialog(ppf, "Sistem je obrisao zaduzenje", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
+                        pripremiFormu(); // Videti drugi nacin, jer se ovako ponovo vrsi poziv do baze
+                    } catch(IOException ioex) {
+                        JOptionPane.showMessageDialog(ppf, "Server je pao. Nije moguce obaviti operaciju. Bicete izlogovani sa sistema.", "Greska", JOptionPane.ERROR_MESSAGE);
+                        Komunikacija.getInstanca().zatvoriResurse();
+                        System.exit(0);
+                   } catch(Exception ex) {
+                        String porukaGreske = ex.getMessage();
+                        JOptionPane.showMessageDialog(ppf, "Sistem ne moze da obrise zaduzenje", "Greska", JOptionPane.ERROR_MESSAGE);
+                   } 
+                }
+            }
+            
+        });
+        
+        
+         ppf.addBtnIzmeniActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int red = ppf.getjTablePozajmice().getSelectedRow();
+                if(red == -1) {
+                    JOptionPane.showMessageDialog(ppf, "Morate izabrati zaduzenje za izmenu", "Greska", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    ModelTabeleZaduzenje mtz = (ModelTabeleZaduzenje) ppf.getjTablePozajmice().getModel();
+                    Zaduzenje zaduzenjeZaIzmenu = mtz.getLista().get(red);
+                    try {
+                        Komunikacija.getInstanca().izmeniZaduzenje(zaduzenjeZaIzmenu);
+                        JOptionPane.showMessageDialog(ppf, "Sistem je zapamtio zaduzenje", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
+                    } catch(IOException ioex) {
+                         JOptionPane.showMessageDialog(ppf, "Server je pao. Nije moguce obaviti operaciju. Bicete izlogovani sa sistema.", "Greska", JOptionPane.ERROR_MESSAGE);
+                         Komunikacija.getInstanca().zatvoriResurse();
+                         System.exit(0);
+                     } catch(Exception ex) {
+                         String porukaGreske = ex.getMessage();
+                         JOptionPane.showMessageDialog(ppf, "Sistem ne moze da zapamti zaduzenje", "Greska", JOptionPane.ERROR_MESSAGE);
+                     } 
+                }
+                
+                
+            }
+            
         });
     }
     

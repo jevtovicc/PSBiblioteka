@@ -21,7 +21,9 @@ import operacije.knjiga.IzmeniKnjiguSO;
 import operacije.knjiga.KreirajKnjiguSO;
 import operacije.knjiga.ObrisiKnjiguSO;
 import operacije.knjiga.UcitajKnjigeSO;
+import operacije.zaduzenje.IzmeniZaduzenjeSO;
 import operacije.zaduzenje.KreirajZaduzenjeSO;
+import operacije.zaduzenje.ObrisiZaduzenjeSO;
 import operacije.zaduzenje.UcitajZaduzenjeSO;
 
 /**
@@ -100,14 +102,14 @@ public class Kontroler {
         operacija.izvrsi(k, null);
     }
 
-    public List<Zaduzenje> ucitajPozajmice() throws Exception {
+    public List<Zaduzenje> ucitajZaduzenja() throws Exception {
         UcitajZaduzenjeSO operacija = new UcitajZaduzenjeSO();
         operacija.izvrsi(null, null);
         
         return operacija.getPozajmice();
     }
 
-    public void dodajPozajmicu(Zaduzenje p) throws Exception {
+    public void dodajZaduzenje(Zaduzenje p) throws Exception {
         KreirajZaduzenjeSO operacija = new KreirajZaduzenjeSO();
         operacija.izvrsi(p, null);
     }
@@ -115,5 +117,15 @@ public class Kontroler {
     public void dodajAutora(Autor a) throws Exception {
         KreirajAutoraSO operacija = new KreirajAutoraSO();
         operacija.izvrsi(a, null);
+    }
+
+    public void obrisiZaduzenje(Zaduzenje z) throws Exception {
+        ObrisiZaduzenjeSO operacija = new ObrisiZaduzenjeSO();
+        operacija.izvrsi(z, null);
+    }
+
+    public void izmeniZaduzenje(Zaduzenje z) throws Exception {
+        IzmeniZaduzenjeSO operacija = new IzmeniZaduzenjeSO();
+        operacija.izvrsi(z, null);
     }
 }

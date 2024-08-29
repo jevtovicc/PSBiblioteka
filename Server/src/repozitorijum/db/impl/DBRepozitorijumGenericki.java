@@ -68,7 +68,8 @@ public class DBRepozitorijumGenericki implements DBRepozitorijum<ApstraktniDomen
 
     @Override
     public void izmeni(ApstraktniDomenskiObjekat param) throws Exception {
-        String sqlUpit = "UPDATE " + param.vratiNazivTabele() + " SET " + param.vratiVrednostZaIzmenu() + " WHERE " + param.vratiPrimarniKljuc();
+        String vrednostiZaIzmenu = param.vratiVrednostZaIzmenu();
+        String sqlUpit = "UPDATE " + param.vratiNazivTabele() + " SET " + vrednostiZaIzmenu + " WHERE " + param.vratiPrimarniKljuc();
         System.out.println(sqlUpit);
         
         Statement st = KonekcijaBPFactory.getInstanca().getKonekcija().createStatement();

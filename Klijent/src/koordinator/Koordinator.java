@@ -49,7 +49,7 @@ public class Koordinator {
     private DodajKnjiguKontroler dodajKnjiguKontroler;
     private IzmeniKnjiguKontroler izmeniKnjiguKontroler;
     
-    private PregledZaduzenjaKontroler pregledPozajmicaKontroler;
+    private PregledZaduzenjaKontroler pregledZaduzenjaKontroler;
     private DodajZaduzenjeKontroler dodajPozajmicuKontroler;
     
     private Koordinator() {
@@ -120,8 +120,8 @@ public class Koordinator {
     }
 
     public void otvoriPregledPozajmicaFormu() {
-        pregledPozajmicaKontroler = new PregledZaduzenjaKontroler(new PregledZaduzenjaForma());
-        pregledPozajmicaKontroler.otvoriFormu();
+        pregledZaduzenjaKontroler = new PregledZaduzenjaKontroler(new PregledZaduzenjaForma());
+        pregledZaduzenjaKontroler.otvoriFormu();
     }
 
     public void otvoriDodajPozajmicuFormu() {
@@ -131,5 +131,9 @@ public class Koordinator {
 
     public void zatvoriAplikaciju() throws IOException {
         Komunikacija.getInstanca().posaljiKrajRada();
+    }
+
+    public void osveziPregledZaduzenjaFormu() {
+        pregledZaduzenjaKontroler.pripremiFormu();
     }
 }

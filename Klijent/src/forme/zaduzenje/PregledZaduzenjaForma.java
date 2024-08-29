@@ -40,6 +40,8 @@ public class PregledZaduzenjaForma extends javax.swing.JFrame {
         jTextFieldNazivKnjige = new javax.swing.JTextField();
         jButtonPretrazi = new javax.swing.JButton();
         jButtonResetuj = new javax.swing.JButton();
+        jButtonObrisi = new javax.swing.JButton();
+        jButtonIzmeni = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Pregled Zaduzenja");
@@ -65,6 +67,10 @@ public class PregledZaduzenjaForma extends javax.swing.JFrame {
 
         jButtonResetuj.setText("Resetuj");
 
+        jButtonObrisi.setText("Obrisi");
+
+        jButtonIzmeni.setText("Izmeni");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -72,7 +78,12 @@ public class PregledZaduzenjaForma extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 542, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 542, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonObrisi)
+                            .addComponent(jButtonIzmeni)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -85,7 +96,7 @@ public class PregledZaduzenjaForma extends javax.swing.JFrame {
                         .addComponent(jButtonPretrazi)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonResetuj)))
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,9 +111,17 @@ public class PregledZaduzenjaForma extends javax.swing.JFrame {
                     .addComponent(jTextFieldNazivKnjige, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonPretrazi)
                     .addComponent(jButtonResetuj))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(108, 108, 108)
+                        .addComponent(jButtonObrisi)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonIzmeni)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -150,6 +169,8 @@ public class PregledZaduzenjaForma extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonIzmeni;
+    private javax.swing.JButton jButtonObrisi;
     private javax.swing.JButton jButtonPretrazi;
     private javax.swing.JButton jButtonResetuj;
     private javax.swing.JLabel jLabel1;
@@ -166,5 +187,13 @@ public class PregledZaduzenjaForma extends javax.swing.JFrame {
 
     public void addBtnResetujActionListener(ActionListener actionListener) {
         jButtonResetuj.addActionListener(actionListener);
+    }
+
+    public void addBtnObrisiActionListener(ActionListener actionListener) {
+        jButtonObrisi.addActionListener(actionListener);
+    }
+    
+    public void addBtnIzmeniActionListener(ActionListener actionListener) {
+        jButtonIzmeni.addActionListener(actionListener);
     }
 }

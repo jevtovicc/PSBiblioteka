@@ -75,7 +75,7 @@ public class Zaduzenje implements ApstraktniDomenskiObjekat {
 
     @Override
     public String toString() {
-        return "Pozajmica{" + "clan=" + clan + ", knjiga=" + knjiga + '}';
+        return "Zaduzenje{" + "clan=" + clan + ", knjiga=" + knjiga + '}';
     }
 
     @Override
@@ -189,9 +189,9 @@ public class Zaduzenje implements ApstraktniDomenskiObjekat {
     public String vratiVrednostZaIzmenu() {
         String outputPattern = "yyyy-MM-dd";
         SimpleDateFormat sdf = new SimpleDateFormat(outputPattern);
-        String datumZaduzenjaString = sdf.format(datumZaduzenja);
         String datumRazduzenjaString = datumRazduzenja == null ? null : sdf.format(datumRazduzenja);  
-        return "clan_id=" + clan.getClanID() + ", knjiga_id=" + knjiga.getKnjigaID() + ", datum_zaduzenja='" + datumZaduzenjaString + "', datum_razduzenja=" + datumRazduzenjaString == null ? "NULL" : datumRazduzenjaString;
+        String vrednostiZaIzmenu = datumRazduzenjaString == null ? "NULL" : ("datum_razduzenja='" + datumRazduzenjaString + "'");
+        return vrednostiZaIzmenu;
     }
 
     @Override

@@ -55,8 +55,10 @@ public class ObradaKlijentskihZahteva extends Thread {
                     case OBRISI_KNJIGU -> obradiObrisiKnjigu(zahtev);
                     case UCITAJ_AUTORE -> obradiUcitajAutore();
                     case DODAJ_AUTORA -> obradiDodajAutora(zahtev);
-                    case UCITAJ_POZAJMICE -> obradiUcitajPozajmice();
-                    case DODAJ_POZAJMICU -> obradiDodajPozajmicu(zahtev);
+                    case UCITAJ_ZADUZENJA -> obradiUcitajZaduzenja();
+                    case DODAJ_ZADUZENJE -> obradiDodajZaduzenje(zahtev);
+                    case OBRISI_ZADUZENJE -> obradiObrisiZaduzenje(zahtev);
+                    case IZMENI_ZADUZENJE -> obradiIzmeniZaduzenje(zahtev);
                     default -> throw new IllegalStateException("Greska. Operacija ne postoji.");
                 }
             } catch(Exception e) {
@@ -179,18 +181,18 @@ public class ObradaKlijentskihZahteva extends Thread {
         posiljalac.posalji(odgovor);
     }
 
-    private void obradiUcitajPozajmice() throws Exception {
+    private void obradiUcitajZaduzenja() throws Exception {
         Odgovor odgovor = new Odgovor();
-        List<Zaduzenje> pozajmice = Kontroler.getInstanca().ucitajPozajmice();
+        List<Zaduzenje> pozajmice = Kontroler.getInstanca().ucitajZaduzenja();
         odgovor.setOdgovor(pozajmice);
         posiljalac.posalji(odgovor);
     }
 
-    private void obradiDodajPozajmicu(Zahtev zahtev) throws IOException {
+    private void obradiDodajZaduzenje(Zahtev zahtev) throws IOException {
         Odgovor odgovor = new Odgovor();
         try {
             Zaduzenje p = (Zaduzenje) zahtev.getParametar();
-            Kontroler.getInstanca().dodajPozajmicu(p);                            
+            Kontroler.getInstanca().dodajZaduzenje(p);                            
             odgovor.setOdgovor(null);
         } catch(Exception e) {
             odgovor.setOdgovor(e);
@@ -208,6 +210,30 @@ public class ObradaKlijentskihZahteva extends Thread {
             Autor a = (Autor) zahtev.getParametar();
             Kontroler.getInstanca().dodajAutora(a);                            
             odgovor.setOdgovor(null);
+        } catch(Exception e) {
+            odgovor.setOdgovor(e);
+        }
+        posiljalac.posalji(odgovor);
+    }
+
+    private void obradiObrisiZaduzenje(Zahtev zahtev) throws IOException {
+        Odgovor odgovor = new Odgovor();
+        try {
+            Zaduzenje z = (Zaduzenje) zahtev.getParametar();
+            Kontroler.getInstanca().obrisiZaduzenje(z);
+            odgovor.setOdgovor(z);
+        } catch(Exception e) {
+            odgovor.setOdgovor(e);
+        }
+        posiljalac.posalji(odgovor);
+    }
+
+    private void obradiIzmeniZaduzenje(Zahtev zahtev) throws IOException {
+        Odgovor odgovor = new Odgovor();
+        try {
+            Zaduzenje z = (Zaduzenje) zahtev.getParametar();
+            Kontroler.getInstanca().izmeniZaduzenje(z);
+            odgovor.setOdgovor(z);
         } catch(Exception e) {
             odgovor.setOdgovor(e);
         }

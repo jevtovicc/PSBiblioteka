@@ -76,7 +76,7 @@ public class DodajKnjiguKontroler {
                         System.exit(0);
                    } catch(Exception ex) {
                         String porukaGreske = ex.getMessage();
-                        JOptionPane.showMessageDialog(dkforma, porukaGreske, "Greska", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(dkforma, "Sistem ne moze da zapamti knjigu", "Greska", JOptionPane.ERROR_MESSAGE);
                    } 
                }
            }

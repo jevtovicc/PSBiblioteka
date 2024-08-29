@@ -5,7 +5,9 @@
 package forme.model;
 
 import domen.Zaduzenje;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.swing.table.AbstractTableModel;
@@ -53,6 +55,25 @@ public class ModelTabeleZaduzenje extends AbstractTableModel {
             case 4: return datumRazduzenjaString;
             default: return "NA";
         }   
+    }
+    
+    @Override
+    public boolean isCellEditable(int row, int column) {
+        return column == 4;
+    }
+    
+    @Override
+    public void setValueAt(Object value, int row, int column) {
+        Zaduzenje zaduzenjeZaIzmenu = lista.get(row);
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        
+        try {                   
+            Date noviDatumRazduzenja = formatter.parse((String) value);
+            zaduzenjeZaIzmenu.setDatumRazduzenja(new Date(noviDatumRazduzenja.getTime()));
+            fireTableCellUpdated(row, column); // Obaveštava tabelu da je vrednost promenjena
+        } catch (ParseException pex) {            
+            return;
+        }
     }
 
     public List<Zaduzenje> getLista() {
