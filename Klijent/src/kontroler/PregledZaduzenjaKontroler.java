@@ -92,6 +92,9 @@ public class PregledZaduzenjaKontroler {
                     try {
                         Komunikacija.getInstanca().izmeniZaduzenje(zaduzenjeZaIzmenu);
                         JOptionPane.showMessageDialog(ppf, "Sistem je zapamtio zaduzenje", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
+                        pripremiFormu();
+                        ppf.getjTextFieldImePrezimeClana().setText("");
+                        ppf.getjTextFieldNazivKnjige().setText("");
                     } catch(IOException ioex) {
                          JOptionPane.showMessageDialog(ppf, "Server je pao. Nije moguce obaviti operaciju. Bicete izlogovani sa sistema.", "Greska", JOptionPane.ERROR_MESSAGE);
                          Komunikacija.getInstanca().zatvoriResurse();
@@ -99,6 +102,9 @@ public class PregledZaduzenjaKontroler {
                      } catch(Exception ex) {
                          String porukaGreske = ex.getMessage();
                          JOptionPane.showMessageDialog(ppf, "Sistem ne moze da zapamti zaduzenje", "Greska", JOptionPane.ERROR_MESSAGE);
+                         ppf.getjTextFieldImePrezimeClana().setText("");
+                         ppf.getjTextFieldNazivKnjige().setText("");
+                         pripremiFormu();
                      } 
                 }
                 

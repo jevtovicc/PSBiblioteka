@@ -59,7 +59,7 @@ public class ModelTabeleZaduzenje extends AbstractTableModel {
     
     @Override
     public boolean isCellEditable(int row, int column) {
-        return column == 4;
+        return column == 4 && (getValueAt(row, column) == null);
     }
     
     @Override
