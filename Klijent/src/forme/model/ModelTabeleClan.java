@@ -17,7 +17,7 @@ import javax.swing.table.AbstractTableModel;
 public class ModelTabeleClan extends AbstractTableModel {
 
     List<Clan> lista;
-    String[] kolone = {"ID", "Ime i Prezime", "Adresa Stanovanja", "Datum uclanjenja", "Datum vazenja clanarine"};
+    String[] kolone = {"ID", "Ime i Prezime", "Adresa Stanovanja", "Datum uclanjenja", "Datum isteka clanarine"};
     
     public ModelTabeleClan(List<Clan> lista) {
         this.lista = lista;
@@ -43,8 +43,8 @@ public class ModelTabeleClan extends AbstractTableModel {
         Clan c = lista.get(rowIndex);
         String outputPattern = "dd/MM/yyyy";
         SimpleDateFormat sdf = new SimpleDateFormat(outputPattern);
-        String datumUclanjenjaString = sdf.format(c.getDatumUclanjenja());
-        String datumIstekaString = sdf.format(c.getDatumIsteka());
+        String datumUclanjenjaString = sdf.format(c.getClanskaKarta().getDatumUclanjenja());
+        String datumIstekaString = sdf.format(c.getClanskaKarta().getDatumIsteka());
         
         switch (columnIndex) {
             case 0: return c.getClanID();

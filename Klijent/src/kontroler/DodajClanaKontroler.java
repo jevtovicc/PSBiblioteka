@@ -5,6 +5,7 @@
 package kontroler;
 
 import domen.Clan;
+import domen.ClanskaKarta;
 import forme.clan.DodajClanaForma;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -65,10 +66,15 @@ public class DodajClanaKontroler {
                c.setImePrezime(imePrezime);
                c.setAdresaStanovanja(adresaStanovanja);
                
+               ClanskaKarta ck = new ClanskaKarta();
+               ck.setClan(c);
+               
+               c.setClanskaKarta(ck);
+               
                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
                try {                   
                    Date datumUclanjenja = formatter.parse(datumUclanjenjaString);
-                   c.setDatumUclanjenja(datumUclanjenja);
+                   ck.setDatumUclanjenja(datumUclanjenja);
                } catch (ParseException pex) {
                    JOptionPane.showMessageDialog(dcforma, "Datum uclanjenja mora biti u odgovarajucem formatu", "Greska", JOptionPane.ERROR_MESSAGE);
                    return;
@@ -76,7 +82,7 @@ public class DodajClanaKontroler {
                
                try {                   
                    Date datumIsteka = formatter.parse(datumIstekaString);
-                   c.setDatumIsteka(datumIsteka);
+                   ck.setDatumIsteka(datumIsteka);
                } catch (ParseException pex) {
                    JOptionPane.showMessageDialog(dcforma, "Datum isteka mora biti u odgovarajucem formatu", "Greska", JOptionPane.ERROR_MESSAGE);
                    return;

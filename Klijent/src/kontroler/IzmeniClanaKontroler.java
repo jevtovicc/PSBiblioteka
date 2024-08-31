@@ -5,6 +5,7 @@
 package kontroler;
 
 import domen.Clan;
+import domen.ClanskaKarta;
 import forme.clan.IzmeniClanaForma;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -69,7 +70,7 @@ public class IzmeniClanaKontroler {
                
                try {                   
                    Date datumUclanjenja = formatter.parse(datumUclanjenjaString);
-                   clanZaIzmenu.setDatumUclanjenja(datumUclanjenja);
+                   clanZaIzmenu.getClanskaKarta().setDatumUclanjenja(datumUclanjenja);
                } catch (ParseException pex) {
                    JOptionPane.showMessageDialog(icforma, "Datum uclanjenja mora biti u odgovarajucem formatu", "Greska", JOptionPane.ERROR_MESSAGE);
                    return;
@@ -77,7 +78,7 @@ public class IzmeniClanaKontroler {
                
                try {                   
                    Date datumIsteka = formatter.parse(datumIstekaString);
-                   clanZaIzmenu.setDatumIsteka(datumIsteka);
+                   clanZaIzmenu.getClanskaKarta().setDatumIsteka(datumIsteka);
                } catch (ParseException pex) {
                    JOptionPane.showMessageDialog(icforma, "Datum isteka mora biti u odgovarajucem formatu", "Greska", JOptionPane.ERROR_MESSAGE);
                    return;
@@ -110,8 +111,8 @@ public class IzmeniClanaKontroler {
         String adresa = clanZaIzmenu.getAdresaStanovanja();
         String outputPattern = "dd/MM/yyyy";
         SimpleDateFormat sdf = new SimpleDateFormat(outputPattern);
-        String datumUclanjenjaString = sdf.format(clanZaIzmenu.getDatumUclanjenja());
-        String datumIstekaString = sdf.format(clanZaIzmenu.getDatumIsteka());
+        String datumUclanjenjaString = sdf.format(clanZaIzmenu.getClanskaKarta().getDatumUclanjenja());
+        String datumIstekaString = sdf.format(clanZaIzmenu.getClanskaKarta().getDatumIsteka());
         
         icforma.getjTextFieldImePrezime().setText(imePrezime);
         icforma.getjTextFieldAdresa().setText(adresa);

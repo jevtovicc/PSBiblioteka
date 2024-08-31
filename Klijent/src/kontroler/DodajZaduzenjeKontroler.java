@@ -17,8 +17,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import komunikacija.Komunikacija;
 
@@ -45,7 +43,6 @@ public class DodajZaduzenjeKontroler {
                Zaduzenje p = new Zaduzenje();
                
                String datumIznajmljivanjaString = dpf.getjTextFieldDatumZaduzenja().getText().trim();
-               String datumVracanjaString = dpf.getjTextFieldDatumRazduzenja().getText().trim();
                
                if (datumIznajmljivanjaString.isEmpty()) {
                    JOptionPane.showMessageDialog(dpf, "Polje za datum zaduzenja ne sme biti prazno", "Greska", JOptionPane.ERROR_MESSAGE);
@@ -59,22 +56,6 @@ public class DodajZaduzenjeKontroler {
                } catch (ParseException pex) {
                    JOptionPane.showMessageDialog(dpf, "Datum zaduzenja mora biti u odgovarajucem formatu", "Greska", JOptionPane.ERROR_MESSAGE);
                    return;
-               }
-               
-               if (datumVracanjaString == null || datumVracanjaString.isEmpty()) {
-                   p.setDatumRazduzenja(null);
-               } else {
-                   try {                   
-                       Date datumVracanja = formatter.parse(datumVracanjaString);
-                       if (datumVracanja.before(p.getDatumZaduzenja())) {
-                           JOptionPane.showMessageDialog(dpf, "Datum razduzenja mora biti nakon datuma zaduzenja", "Greska", JOptionPane.ERROR_MESSAGE);
-                           return;
-                       }
-                       p.setDatumRazduzenja(datumVracanja);
-                   } catch (ParseException pex) {
-                       JOptionPane.showMessageDialog(dpf, "Datum razduzenja mora biti u odgovarajucem formatu", "Greska", JOptionPane.ERROR_MESSAGE);
-                       return;
-                   }
                }
 
                int redClana = dpf.getjTableClanovi().getSelectedRow();

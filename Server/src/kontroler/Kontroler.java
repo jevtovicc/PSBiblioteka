@@ -6,6 +6,7 @@ package kontroler;
 
 import domen.Autor;
 import domen.Clan;
+import domen.ClanskaKarta;
 import domen.Knjiga;
 import domen.Zaduzenje;
 import domen.Zaposleni;
@@ -14,7 +15,9 @@ import operacije.autor.KreirajAutoraSO;
 import operacije.autor.UcitajAutoreSO;
 import operacije.prijava.PrijavaSO;
 import operacije.clan.IzmeniClanaSO;
+import operacije.clan.IzmeniClanskuKartuSO;
 import operacije.clan.KreirajClanaSO;
+import operacije.clan.KreirajClanskuKartuSO;
 import operacije.clan.ObrisiClanaSO;
 import operacije.clan.UcitajClanoveSO;
 import operacije.knjiga.IzmeniKnjiguSO;
@@ -24,7 +27,7 @@ import operacije.knjiga.UcitajKnjigeSO;
 import operacije.zaduzenje.IzmeniZaduzenjeSO;
 import operacije.zaduzenje.KreirajZaduzenjeSO;
 import operacije.zaduzenje.ObrisiZaduzenjeSO;
-import operacije.zaduzenje.UcitajZaduzenjeSO;
+import operacije.zaduzenje.UcitajZaduzenjaSO;
 
 /**
  *
@@ -103,7 +106,7 @@ public class Kontroler {
     }
 
     public List<Zaduzenje> ucitajZaduzenja() throws Exception {
-        UcitajZaduzenjeSO operacija = new UcitajZaduzenjeSO();
+        UcitajZaduzenjaSO operacija = new UcitajZaduzenjaSO();
         operacija.izvrsi(null, null);
         
         return operacija.getPozajmice();
@@ -127,5 +130,15 @@ public class Kontroler {
     public void izmeniZaduzenje(Zaduzenje z) throws Exception {
         IzmeniZaduzenjeSO operacija = new IzmeniZaduzenjeSO();
         operacija.izvrsi(z, null);
+    }
+
+    public void dodajClanskuKartu(ClanskaKarta clanskaKarta) throws Exception {
+        KreirajClanskuKartuSO operacija = new KreirajClanskuKartuSO();
+        operacija.izvrsi(clanskaKarta, null);
+    }
+
+    public void izmeniClanskuKartu(ClanskaKarta clanskaKarta) throws Exception {
+        IzmeniClanskuKartuSO operacija = new IzmeniClanskuKartuSO();
+        operacija.izvrsi(clanskaKarta, null);
     }
 }

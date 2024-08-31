@@ -12,7 +12,7 @@ import operacije.ApstraktnaGenerickaOperacija;
  *
  * @author filipjevtovic
  */
-public class UcitajZaduzenjeSO extends ApstraktnaGenerickaOperacija {
+public class UcitajZaduzenjaSO extends ApstraktnaGenerickaOperacija {
     
     private List<Zaduzenje> pozajmice;
 
@@ -24,7 +24,8 @@ public class UcitajZaduzenjeSO extends ApstraktnaGenerickaOperacija {
     protected void izvrsiOperaciju(Object param, String kljuc) throws Exception {
         String uslov = " JOIN clan c on zaduzenje.clan_id = c.clan_id" +
                        " JOIN knjiga k on k.knjiga_id = zaduzenje.knjiga_id" + 
-                       " JOIN autor a on k.autor_id = a.autor_id";
+                       " JOIN autor a on k.autor_id = a.autor_id" +
+                       " JOIN clanska_karta ck on c.clan_id = ck.clan_id";
         pozajmice = broker.vratiSve(new Zaduzenje(), uslov);
     }
 

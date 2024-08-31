@@ -28,15 +28,9 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jTextFieldDatumZaduzenja" pref="239" max="32767" attributes="0"/>
-                          <Component id="jTextFieldDatumRazduzenja" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                      <Component id="jTextFieldDatumZaduzenja" min="-2" pref="239" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
@@ -65,7 +59,7 @@
                   <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
                   <Component id="jButtonDodajPozajmicu" alignment="1" min="-2" pref="107" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="72" max="32767" attributes="0"/>
+              <EmptySpace pref="43" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -77,12 +71,7 @@
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTextFieldDatumZaduzenja" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldDatumRazduzenja" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTextFieldImePrezime" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -102,7 +91,7 @@
               <Component id="jScrollPane2" min="-2" pref="193" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jButtonDodajPozajmicu" min="-2" pref="35" max="-2" attributes="0"/>
-              <EmptySpace pref="27" max="32767" attributes="0"/>
+              <EmptySpace pref="85" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -113,14 +102,7 @@
         <Property name="text" type="java.lang.String" value="Datum zaduzenja (dd/MM/yyyy):"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Datum razduzenja (dd/MM/yyyy):"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldDatumZaduzenja">
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldDatumRazduzenja">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>

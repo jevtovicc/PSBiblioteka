@@ -92,7 +92,8 @@ public class ObradaKlijentskihZahteva extends Thread {
         Odgovor odgovor = new Odgovor();
         try {
             Clan c = (Clan) zahtev.getParametar();
-            Kontroler.getInstanca().dodajClana(c);                            
+            Kontroler.getInstanca().dodajClana(c);
+            Kontroler.getInstanca().dodajClanskuKartu(c.getClanskaKarta());
             odgovor.setOdgovor(null);
         } catch(Exception e) {
             odgovor.setOdgovor(e);
@@ -112,6 +113,7 @@ public class ObradaKlijentskihZahteva extends Thread {
         try {
             Clan c = (Clan) zahtev.getParametar();
             Kontroler.getInstanca().izmeniClana(c);
+            Kontroler.getInstanca().izmeniClanskuKartu(c.getClanskaKarta());
             odgovor.setOdgovor(c);
         } catch(Exception e) {
             odgovor.setOdgovor(e);

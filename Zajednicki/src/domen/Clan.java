@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.sql.ResultSet;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -19,18 +18,16 @@ public class Clan implements ApstraktniDomenskiObjekat {
     private long clanID;
     private String imePrezime;
     private String adresaStanovanja;
-    private Date datumUclanjenja;
-    private Date datumIsteka;
+    private ClanskaKarta clanskaKarta;
 
     public Clan() {
     }
 
-    public Clan(long clanID, String imePrezime, String adresaStanovanja, Date datumUclanjenja, Date datumIsteka) {
+    public Clan(long clanID, String imePrezime, String adresaStanovanja, ClanskaKarta clanskaKarta) {
         this.clanID = clanID;
         this.imePrezime = imePrezime;
         this.adresaStanovanja = adresaStanovanja;
-        this.datumUclanjenja = datumUclanjenja;
-        this.datumIsteka = datumIsteka;
+        this.clanskaKarta = clanskaKarta;
     }
 
     
@@ -57,25 +54,15 @@ public class Clan implements ApstraktniDomenskiObjekat {
 
     public void setAdresaStanovanja(String adresaStanovanja) {
         this.adresaStanovanja = adresaStanovanja;
+    }    
+
+    public ClanskaKarta getClanskaKarta() {
+        return clanskaKarta;
     }
 
-    public Date getDatumUclanjenja() {
-        return datumUclanjenja;
+    public void setClanskaKarta(ClanskaKarta clanskaKarta) {
+        this.clanskaKarta = clanskaKarta;
     }
-
-    public void setDatumUclanjenja(Date datumUclanjenja) {
-        this.datumUclanjenja = datumUclanjenja;
-    }
-
-    public Date getDatumIsteka() {
-        return datumIsteka;
-    }
-
-    public void setDatumIsteka(Date datumIsteka) {
-        this.datumIsteka = datumIsteka;
-    }
-    
-    
     
     @Override
     public String toString() {
@@ -122,9 +109,15 @@ public class Clan implements ApstraktniDomenskiObjekat {
             long clanID = rs.getLong("clan_id");
             String imePrezime = rs.getString("ime_prezime");
             String adresaStanovanja = rs.getString("adresa_stanovanja");
+            
             Date datumUclanjenja = rs.getDate("datum_uclanjenja");
             Date datumIsteka = rs.getDate("datum_isteka");
-            Clan c = new Clan(clanID, imePrezime, adresaStanovanja, datumUclanjenja, datumIsteka);
+            long kartaID = rs.getLong("ck_id");
+            
+            ClanskaKarta ck = new ClanskaKarta(kartaID, datumUclanjenja, datumIsteka, null);
+            
+            Clan c = new Clan(clanID, imePrezime, adresaStanovanja, ck);
+            ck.setClan(c);
             lista.add(c);
         }
         
@@ -133,16 +126,12 @@ public class Clan implements ApstraktniDomenskiObjekat {
 
     @Override
     public String vratiKoloneZaUbacivanje() {
-        return "ime_prezime, adresa_stanovanja, datum_uclanjenja, datum_isteka";
+        return "ime_prezime, adresa_stanovanja";
     }
 
     @Override
     public String vratiVrednostiZaUbacivanje() {
-        String outputPattern = "yyyy-MM-dd";
-        SimpleDateFormat sdf = new SimpleDateFormat(outputPattern);
-        String datumUclanjenjaString = sdf.format(datumUclanjenja);
-        String datumIstekaString = sdf.format(datumIsteka);
-        return "'" + imePrezime + "'," + "'" + adresaStanovanja + "','" +  datumUclanjenjaString + "','" + datumIstekaString + "'";
+        return "'" + imePrezime + "'," + "'" + adresaStanovanja + "'";
     }
 
     @Override
@@ -157,11 +146,7 @@ public class Clan implements ApstraktniDomenskiObjekat {
 
     @Override
     public String vratiVrednostZaIzmenu() {
-        String outputPattern = "yyyy-MM-dd";
-        SimpleDateFormat sdf = new SimpleDateFormat(outputPattern);
-        String datumUclanjenjaString = sdf.format(datumUclanjenja);
-        String datumIstekaString = sdf.format(datumIsteka);
-        return "ime_prezime='" + imePrezime + "', adresa_stanovanja='" + adresaStanovanja + "', datum_uclanjenja='" + datumUclanjenjaString + "', datum_isteka='" + datumIstekaString + "'";
+        return "ime_prezime='" + imePrezime + "', adresa_stanovanja='" + adresaStanovanja + "'";
     }
 
     @Override

@@ -144,9 +144,15 @@ public class Zaduzenje implements ApstraktniDomenskiObjekat {
             long clanID = rs.getLong("clan_id");
             String clanImePrezime = rs.getString(7);
             String adresaStanovanja = rs.getString("adresa_stanovanja");
+            
+            long kartaID = rs.getLong("ck_id");
             Date datumUclanjenja = rs.getDate("datum_uclanjenja");
             Date datumIsteka = rs.getDate("datum_isteka");
-            Clan c = new Clan(clanID, clanImePrezime, adresaStanovanja, datumUclanjenja, datumIsteka);
+            
+            ClanskaKarta ck = new ClanskaKarta(kartaID, datumUclanjenja, datumIsteka, null);
+            
+            Clan c = new Clan(clanID, clanImePrezime, adresaStanovanja, ck);
+            c.setClanskaKarta(ck);
             
             Zaduzenje p = new Zaduzenje(pozajmicaID, c, k, datumZaduzenja, datumRazduzenja);
             lista.add(p);

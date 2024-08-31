@@ -4,32 +4,22 @@
  */
 package operacije.clan;
 
-import domen.Clan;
-import java.util.List;
+import domen.ClanskaKarta;
 import operacije.ApstraktnaGenerickaOperacija;
 
 /**
  *
  * @author filipjevtovic
  */
-public class UcitajClanoveSO extends ApstraktnaGenerickaOperacija {
+public class KreirajClanskuKartuSO extends ApstraktnaGenerickaOperacija {
     
-    private List<Clan> clanovi;
-
     @Override
     protected void preduslovi(Object param) throws Exception {
-        
-    }
-
-    @Override
-    protected void izvrsiOperaciju(Object param, String kljuc) throws Exception {
-        String uslov = " JOIN clanska_karta ck on clan.clan_id = ck.clan_id";
-        clanovi = broker.vratiSve(new Clan(), uslov);
-    }
-
-    public List<Clan> getClanovi() {
-        return clanovi;
     }
     
+    @Override
+    protected void izvrsiOperaciju(Object param, String kljuc) throws Exception {
+        broker.kreiraj((ClanskaKarta) param);
+    }
     
 }
