@@ -18,6 +18,7 @@ import komunikacija.Posiljalac;
 import komunikacija.Primalac;
 import komunikacija.Zahtev;
 import kontroler.Kontroler;
+import observer.PrijavljeniZaposleniMenadzer;
 
 /**
  *
@@ -28,6 +29,7 @@ public class ObradaKlijentskihZahteva extends Thread {
     Posiljalac posiljalac;
     Primalac primalac;
     boolean kraj=false;
+    private Zaposleni prijavljeniZaposleni;
     
     public ObradaKlijentskihZahteva(Socket soket) {
         this.soket = soket;
@@ -73,6 +75,7 @@ public class ObradaKlijentskihZahteva extends Thread {
         kraj = true;
         try { 
             soket.close(); 
+            PrijavljeniZaposleniMenadzer.ukloniZaposlenog(prijavljeniZaposleni);
             System.out.println("Klijent diskonektovan");
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -84,6 +87,12 @@ public class ObradaKlijentskihZahteva extends Thread {
         Odgovor odgovor = new Odgovor();
         Zaposleni z = (Zaposleni) zahtev.getParametar();
         z = Kontroler.getInstanca().login(z);
+        if (z != null) {
+            this.prijavljeniZaposleni = z;
+            PrijavljeniZaposleniMenadzer.dodajZaposlenog(z);
+        }
+        
+        
         odgovor.setOdgovor(z);
         posiljalac.posalji(odgovor);
     }
@@ -240,5 +249,9 @@ public class ObradaKlijentskihZahteva extends Thread {
             odgovor.setOdgovor(e);
         }
         posiljalac.posalji(odgovor);
+    }
+
+    public Zaposleni getPrijavljeniZaposleni() {
+        return prijavljeniZaposleni;
     }
 }

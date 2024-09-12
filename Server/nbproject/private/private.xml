@@ -3,8 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Server/src/operacije/clan/KreirajClanaSO.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Server/src/repozitorijum/Repozitorijum.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Server/src/repozitorijum/db/DBRepozitorijum.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Server/src/operacije/knjiga/UcitajKnjigeSO.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Server/src/operacije/clan/IzmeniClanskuKartuSO.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Server/src/operacije/clan/UcitajClanoveSO.java</file>
             <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Server/src/kontroler/Kontroler.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Server/src/operacije/zaduzenje/UcitajZaduzenjaSO.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Server/src/repozitorijum/db/impl/DBRepozitorijumGenericki.java</file>
             <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Server/src/niti/ObradaKlijentskihZahteva.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Server/src/operacije/clan/KreirajClanskuKartuSO.java</file>
+            <file>file:/Users/filipjevtovic/NetBeansProjects/PSBiblioteka/Server/src/operacije/ApstraktnaGenerickaOperacija.java</file>
         </group>
     </open-files>
 </project-private>

@@ -58,4 +58,8 @@ public class Server extends Thread {
             ex.printStackTrace();
         }
     }
+
+    public List<ObradaKlijentskihZahteva> getKlijenti() {
+        return klijenti;
+    }
 }

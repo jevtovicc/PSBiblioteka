@@ -4,16 +4,21 @@
  */
 package forme;
 
+import domen.Zaposleni;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import niti.ObradaKlijentskihZahteva;
+import observer.PrijavljeniZaposleniListener;
+import observer.PrijavljeniZaposleniMenadzer;
 import server.Server;
 
 /**
  *
  * @author filipjevtovic
  */
-public class ServerskaForma extends javax.swing.JFrame {
+public class ServerskaForma extends javax.swing.JFrame implements PrijavljeniZaposleniListener  {
     
     private Server server;
 
@@ -25,6 +30,15 @@ public class ServerskaForma extends javax.swing.JFrame {
         initComponents();
         jLabelStatus.setText("");
         jButtonZaustaviServer.setEnabled(false);
+        PrijavljeniZaposleniMenadzer.dodajListener(this);
+        osveziTabelu(PrijavljeniZaposleniMenadzer.getPrijavljeniZaposleni());
+    }
+    
+    @Override
+    public void onPrijavljeniZaposleniPromena() {
+        // Ova metoda će biti pozvana kada se promeni lista prijavljenih zaposlenih
+        List<Zaposleni> prijavljeniZaposleni = PrijavljeniZaposleniMenadzer.getPrijavljeniZaposleni();
+        osveziTabelu(prijavljeniZaposleni);  // Osveži tabelu sa prijavljenim zaposlenima
     }
 
     /**
@@ -36,14 +50,32 @@ public class ServerskaForma extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jButtonPokreniServer = new javax.swing.JButton();
         jButtonZaustaviServer = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabelStatus = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTablePrijavljeniZaposleni = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,6 +96,21 @@ public class ServerskaForma extends javax.swing.JFrame {
         jLabel1.setText("Status:");
 
         jLabelStatus.setText("jLabel2");
+
+        jLabel2.setText("Prijavljeni zaposleni:");
+
+        jTablePrijavljeniZaposleni.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(jTablePrijavljeniZaposleni);
 
         jMenu1.setText("Konfiguracija");
 
@@ -92,8 +139,9 @@ public class ServerskaForma extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(30, 30, 30)
@@ -101,13 +149,14 @@ public class ServerskaForma extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButtonPokreniServer)
                         .addGap(51, 51, 51)
-                        .addComponent(jButtonZaustaviServer, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                        .addComponent(jButtonZaustaviServer, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(90, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabelStatus))
@@ -115,7 +164,11 @@ public class ServerskaForma extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonPokreniServer)
                     .addComponent(jButtonZaustaviServer))
-                .addGap(115, 115, 115))
+                .addGap(27, 27, 27)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -150,10 +203,20 @@ public class ServerskaForma extends javax.swing.JFrame {
     private javax.swing.JButton jButtonPokreniServer;
     private javax.swing.JButton jButtonZaustaviServer;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelStatus;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTablePrijavljeniZaposleni;
     // End of variables declaration//GEN-END:variables
+
+    
+    public void osveziTabelu(List<Zaposleni> prijavljeniZaposleni) {
+        jTablePrijavljeniZaposleni.setModel(new ModelTabeleZaposleni(prijavljeniZaposleni));
+    }
 }
